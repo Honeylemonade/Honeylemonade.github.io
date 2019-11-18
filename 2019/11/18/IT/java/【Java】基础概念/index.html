@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="Honey Lemonade&#39;s blog">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https:&#x2F;&#x2F;honeylemonade.oss-cn-beijing.aliyuncs.com&#x2F;blog&#x2F;IT&#x2F;Java&#x2F;351px-Java_programming_language_logo.svg.png">
-<meta property="og:updated_time" content="2019-11-18T12:26:14.549Z">
+<meta property="og:updated_time" content="2019-11-18T12:33:12.841Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;honeylemonade.oss-cn-beijing.aliyuncs.com&#x2F;blog&#x2F;IT&#x2F;Java&#x2F;351px-Java_programming_language_logo.svg.png">
 
@@ -151,7 +151,7 @@
                 <time class="level-item has-text-grey" datetime="2019-11-18T11:01:46.851Z"><i
                         class="far fa-calendar-alt">&nbsp;</i>2019-11-18</time>
                 
-                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-11-18T12:26:14.549Z"><i
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-11-18T12:33:12.841Z"><i
                         class="far fa-calendar-check">&nbsp;</i>2019-11-18</time>
                 
                 
@@ -339,7 +339,7 @@
 <h2 id="字符串String"><a href="#字符串String" class="headerlink" title="字符串String"></a>字符串String</h2><p>为了节省内存空间，JVM底层对String类型进行了优化，存在着“常量池”。</p>
 <p>一个对象在常量池中，当有需要时，直接使用常量池中的引用，而不是重新创建，这样可以节约空间，提高性能。</p>
 <p>由于是常量，不存在“改变”，所以完全不用担心多个代码块对同一引用的使用会造成错误。</p>
-<img src="../img/Snipaste_2019-11-18_19-59-15.jpg" style="zoom: 67%;">
+<img src="https://honeylemonade.oss-cn-beijing.aliyuncs.com/blog/IT/Java/Snipaste_2019-11-18_19-59-15.jpg" style="zoom: 67%;">
 
 <figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;</span><br><span class="line">       <span class="hljs-comment">//先去String常量池中查找是否已经存在“abc”</span></span><br><span class="line">    	<span class="hljs-comment">//没有找到，则在String常量池中新建“abc”字符串常量</span></span><br><span class="line">       String a = <span class="hljs-string">"abc"</span>;</span><br><span class="line">       <span class="hljs-comment">//在String常量池中找到“abc”，将其引用直接赋值给变量</span></span><br><span class="line">       String b = <span class="hljs-string">"abc"</span>;</span><br><span class="line">       <span class="hljs-comment">//直接new String（“abc”）创建一个新的字符串对象，创建的对象不在字符串常量池中</span></span><br><span class="line">       String c = <span class="hljs-keyword">new</span> String(<span class="hljs-string">"abc"</span>);</span><br><span class="line">       <span class="hljs-comment">//结果为true</span></span><br><span class="line">       System.out.println(a == b);</span><br><span class="line">       <span class="hljs-comment">//结果为false</span></span><br><span class="line">       System.out.println(a == c);</span><br><span class="line">       <span class="hljs-comment">//结果为true</span></span><br><span class="line">       System.out.println(a.equals(c));</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
 
