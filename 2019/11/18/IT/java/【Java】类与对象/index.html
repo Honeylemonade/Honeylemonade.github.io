@@ -10,14 +10,14 @@
 <title>【Java】类与对象 - Honey Lemonade&#39;s blog</title>
 
 
-    <meta name="keywords" content="Java基">
+    <meta name="keywords" content="Java">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【Java】类与对象">
 <meta property="og:url" content="https:&#x2F;&#x2F;honeylemonade.github.io&#x2F;2019&#x2F;11&#x2F;18&#x2F;IT&#x2F;java&#x2F;%E3%80%90Java%E3%80%91%E7%B1%BB%E4%B8%8E%E5%AF%B9%E8%B1%A1&#x2F;index.html">
 <meta property="og:site_name" content="Honey Lemonade&#39;s blog">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https:&#x2F;&#x2F;honeylemonade.oss-cn-beijing.aliyuncs.com&#x2F;blog&#x2F;IT&#x2F;Java&#x2F;351px-Java_programming_language_logo.svg.png">
-<meta property="og:updated_time" content="2019-11-18T13:02:13.755Z">
+<meta property="og:updated_time" content="2019-11-18T13:06:37.857Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;honeylemonade.oss-cn-beijing.aliyuncs.com&#x2F;blog&#x2F;IT&#x2F;Java&#x2F;351px-Java_programming_language_logo.svg.png">
 
@@ -151,7 +151,7 @@
                 <time class="level-item has-text-grey" datetime="2019-11-18T12:35:13.655Z"><i
                         class="far fa-calendar-alt">&nbsp;</i>2019-11-18</time>
                 
-                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-11-18T13:02:13.755Z"><i
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-11-18T13:06:37.857Z"><i
                         class="far fa-calendar-check">&nbsp;</i>2019-11-18</time>
                 
                 
@@ -164,7 +164,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    8 分钟 读完 (大约 1234 个字)
+                    9 分钟 读完 (大约 1320 个字)
                 </span>
                 
                 
@@ -254,7 +254,12 @@
 </ul>
 <figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">main</span><span class="hljs-params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="hljs-comment">//声明大数值类型</span></span><br><span class="line">        BigInteger a = BigInteger.valueOf(<span class="hljs-number">100</span>);</span><br><span class="line">        BigInteger b = BigInteger.valueOf(<span class="hljs-number">1000</span>);</span><br><span class="line">        <span class="hljs-comment">//相当于a+b</span></span><br><span class="line">        BigInteger c = a.add(b);</span><br><span class="line">        <span class="hljs-comment">//相当于a*b</span></span><br><span class="line">        BigInteger d = a.multiply(b);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
-<h2 id="包装类"><a href="#包装类" class="headerlink" title="包装类"></a>包装类</h2><p>8中基本数据类型都有对应的包装类，这里用int的包装类，Integer为例：</p>
+<h2 id="包装类"><a href="#包装类" class="headerlink" title="包装类"></a>包装类</h2><ul>
+<li>包装类和基本数据类型之间可以自动<strong>装箱</strong>和<strong>拆箱</strong></li>
+<li>用包装类做相等比较的时候，要使用equals，原因是“==”比较的是包装类声明的对象的引用</li>
+<li>包装类对象值不能改变，并且包装类都用final修饰，不能被继承</li>
+</ul>
+<p>8中基本数据类型都有对应的包装类，这里用int的包装类，Integer为例：</p>
 <p>Integer.parseInt(“1024”);</p>
 <p>Integer.valueOf(“1024”).intValue();</p>
 <p><strong>这两个返回值都为int型</strong></p>
@@ -271,7 +276,7 @@
             <div class="level-start">
                 <div class="level-item">
                     <i class="fas fa-tags has-text-grey"></i>&nbsp;
-                    <a class="has-link-grey -link" href="/tags/Java%E5%9F%BA/" rel="tag">Java基</a>
+                    <a class="has-link-grey -link" href="/tags/Java/" rel="tag">Java</a>
                 </div>
             </div>
         </div>
