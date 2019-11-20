@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.0.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>【计算机网络】物理层 - Honey Lemonade&#39;s blog</title>
+
+
+    <meta name="keywords" content="计算机网络">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【计算机网络】物理层">
+<meta property="og:url" content="https:&#x2F;&#x2F;honeylemonade.github.io&#x2F;2019&#x2F;11&#x2F;20&#x2F;IT&#x2F;%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C&#x2F;%E3%80%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E3%80%91%E7%89%A9%E7%90%86%E5%B1%82&#x2F;index.html">
+<meta property="og:site_name" content="Honey Lemonade&#39;s blog">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https:&#x2F;&#x2F;honeylemonade.oss-cn-beijing.aliyuncs.com&#x2F;blog&#x2F;IT&#x2F;%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C&#x2F;network%E5%B0%81%E9%9D%A2.png">
+<meta property="og:updated_time" content="2019-11-20T07:58:52.132Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;honeylemonade.oss-cn-beijing.aliyuncs.com&#x2F;blog&#x2F;IT&#x2F;%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C&#x2F;network%E5%B0%81%E9%9D%A2.png">
+
+
+
+
+
+
+
+<link rel="icon" href="https://honeylemonade.oss-cn-beijing.aliyuncs.com/blog/favicon.png">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.png" alt="【计算机网络】物理层" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/archives">Archives</a>
+                
+                <a class="navbar-item"
+                href="/categories">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags">Tags</a>
+                
+                <a class="navbar-item"
+                href="/about">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/Honeylemonade">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;" target="_blank" rel="noopener">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;" target="_blank" rel="noopener">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-image">
+        <span  class="image is-7by1">
+        <img class="thumbnail" src="https://honeylemonade.oss-cn-beijing.aliyuncs.com/blog/IT/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/network%E5%B0%81%E9%9D%A2.png" alt="【计算机网络】物理层">
+        </span>
+    </div>
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+            【计算机网络】物理层
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-11-20T07:12:39.652Z"><i
+                        class="far fa-calendar-alt">&nbsp;</i>2019-11-20</time>
+                
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-11-20T07:58:52.132Z"><i
+                        class="far fa-calendar-check">&nbsp;</i>2019-11-20</time>
+                
+                
+                <i style="color: #7a7a7a;" class="fa fa-folder-open">&nbsp;</i>
+                <div class="level-item">
+                    <a class="has-link-grey -link" href="/categories/IT/">IT</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/IT/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    4 分钟 读完 (大约 635 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <hr style="height:1px;margin:1rem 0" />
+        <div class="content">
+            <!-- abstract-->
+<a id="more"></a>
+
+<h1 id="物理层简介"><a href="#物理层简介" class="headerlink" title="物理层简介"></a>物理层简介</h1><p>物理层之间的传输单位是<strong>比特</strong>（bit）</p>
+<p>物理层考虑的是，怎样才能在连接各种计算机的<strong>传输媒体上传输数据比特流</strong>，描述了传输媒体接口的特性：</p>
+<ol>
+<li>机器特性：接口的尺寸，形状，引脚数等。</li>
+<li>电气特性：电缆上各条线的电压范围</li>
+<li>功能特性：某条线上的电压意义</li>
+<li>过程特性：对于不同功能的各种可能事件的出现顺序</li>
+</ol>
+<h1 id="数据通信基础知识"><a href="#数据通信基础知识" class="headerlink" title="数据通信基础知识"></a>数据通信基础知识</h1><p><strong>一，信道的分类</strong></p>
+<ol>
+<li>单向通信（单工）：只能向一个方向发送信号，例如：广播，集线器</li>
+<li>双向交替通信（半双工）：可以双向发送，但是不能同时发送</li>
+<li>双向同时通信（全双工）：可以双向并且同时发送，如交换机</li>
+</ol>
+<p><strong>二，常用的数字信号编码方式</strong></p>
+<p><img src="https://honeylemonade.oss-cn-beijing.aliyuncs.com/blog/IT/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/Snipaste_2019-11-20_15-44-00.jpg" alt></p>
+<ol>
+<li>不归零制：正<strong>电平</strong>代表1，负电平代表0</li>
+<li>归零制编码：正<strong>脉冲</strong>代表1，负脉冲代表0</li>
+<li>曼彻斯特编码：位周期中心向上跳变代表0，位周期中心向下跳变表示1</li>
+<li>差分曼彻斯特：在每一位的中心处始终都有跳变。位开始边界有跳变代表0，位开始边界没有跳变代表1</li>
+</ol>
+<h1 id="物理层下面的传输媒体"><a href="#物理层下面的传输媒体" class="headerlink" title="物理层下面的传输媒体"></a>物理层下面的传输媒体</h1><p><strong>一，引导型传输媒体（沿着媒介传播）</strong></p>
+<ol>
+<li>双绞线</li>
+<li>同轴电缆</li>
+<li>光缆</li>
+</ol>
+<p><strong>二，非引导型传输媒体（空间自由传播）</strong></p>
+<ol>
+<li>波</li>
+</ol>
+<h1 id="信道复用技术"><a href="#信道复用技术" class="headerlink" title="信道复用技术"></a>信道复用技术</h1><img src="https://honeylemonade.oss-cn-beijing.aliyuncs.com/blog/IT/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/Snipaste_2019-11-20_15-46-22.jpg" style="zoom:67%;">
+
+<blockquote>
+<p>使用信道复用技术可以节约信道，经济实惠</p>
+</blockquote>
+<p><img src="https://honeylemonade.oss-cn-beijing.aliyuncs.com/blog/IT/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/Snipaste_2019-11-20_15-53-41.jpg" alt></p>
+<h2 id="频分复用"><a href="#频分复用" class="headerlink" title="频分复用"></a>频分复用</h2><p>不同频率代表着不同的发送者</p>
+<h2 id="时分复用"><a href="#时分复用" class="headerlink" title="时分复用"></a>时分复用</h2><p>把帧分成多个段，不同段代表着不同的发送者</p>
+<h2 id="码分复用（码分多址）"><a href="#码分复用（码分多址）" class="headerlink" title="码分复用（码分多址）"></a>码分复用（码分多址）</h2><p>每一个比特时间在划分为m个短的间隔，称为码片。各个用户使用经过特殊挑选的不同码片序列，并且<strong>相互正交</strong>（积为0），因此个用户之间不会产生干扰。</p>
+<p>例题：</p>
+<p><img src="https://honeylemonade.oss-cn-beijing.aliyuncs.com/blog/IT/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/Snipaste_2019-11-20_15-51-08.jpg" alt></p>
+
+        </div>
+        
+        <hr style="height:1px;margin:1rem 0" />
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <i class="fas fa-tags has-text-grey"></i>&nbsp;
+                    <a class="has-link-grey -link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev"
+                href="/2019/11/20/IT/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E3%80%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E3%80%91%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">【计算机网络】数据链路层</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next"
+                href="/2019/11/20/IT/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E3%80%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E3%80%91%E6%A6%82%E8%BF%B0/">
+                <span class="level-item">【计算机网络】概述</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+
+<div class="card widget column-left is-sticky" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#物理层简介">
+        <span class="has-mr-6">1</span>
+        <span>物理层简介</span>
+        </a></li><li>
+        <a class="is-flex" href="#数据通信基础知识">
+        <span class="has-mr-6">2</span>
+        <span>数据通信基础知识</span>
+        </a></li><li>
+        <a class="is-flex" href="#物理层下面的传输媒体">
+        <span class="has-mr-6">3</span>
+        <span>物理层下面的传输媒体</span>
+        </a></li><li>
+        <a class="is-flex" href="#信道复用技术">
+        <span class="has-mr-6">4</span>
+        <span>信道复用技术</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#频分复用">
+        <span class="has-mr-6">4.1</span>
+        <span>频分复用</span>
+        </a></li><li>
+        <a class="is-flex" href="#时分复用">
+        <span class="has-mr-6">4.2</span>
+        <span>时分复用</span>
+        </a></li><li>
+        <a class="is-flex" href="#码分复用（码分多址）">
+        <span class="has-mr-6">4.3</span>
+        <span>码分复用（码分多址）</span>
+        </a></li></ul></li></ul>
+        </div>
+    </div>
+</div>
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.png" alt="【计算机网络】物理层" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2019 Honey Lemonade&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="GitHub" href="https://github.com/Honeylemonade">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+<script>
+var IcarusThemeSettings = {
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+    
+    
+<script src="/js/animation.js"></script>
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+    
+    
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/" target="_blank" rel="noopener">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+    
+    
+<a id="back-to-top" title="回到顶端">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

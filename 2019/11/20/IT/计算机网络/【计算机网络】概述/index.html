@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.0.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>【计算机网络】概述 - Honey Lemonade&#39;s blog</title>
+
+
+    <meta name="keywords" content="计算机网络">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【计算机网络】概述">
+<meta property="og:url" content="https:&#x2F;&#x2F;honeylemonade.github.io&#x2F;2019&#x2F;11&#x2F;20&#x2F;IT&#x2F;%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C&#x2F;%E3%80%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E3%80%91%E6%A6%82%E8%BF%B0&#x2F;index.html">
+<meta property="og:site_name" content="Honey Lemonade&#39;s blog">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https:&#x2F;&#x2F;honeylemonade.oss-cn-beijing.aliyuncs.com&#x2F;blog&#x2F;IT&#x2F;%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C&#x2F;network%E5%B0%81%E9%9D%A2.png">
+<meta property="og:updated_time" content="2019-11-20T07:12:01.875Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;honeylemonade.oss-cn-beijing.aliyuncs.com&#x2F;blog&#x2F;IT&#x2F;%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C&#x2F;network%E5%B0%81%E9%9D%A2.png">
+
+
+
+
+
+
+
+<link rel="icon" href="https://honeylemonade.oss-cn-beijing.aliyuncs.com/blog/favicon.png">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.png" alt="【计算机网络】概述" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/archives">Archives</a>
+                
+                <a class="navbar-item"
+                href="/categories">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags">Tags</a>
+                
+                <a class="navbar-item"
+                href="/about">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/Honeylemonade">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;" target="_blank" rel="noopener">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;" target="_blank" rel="noopener">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-image">
+        <span  class="image is-7by1">
+        <img class="thumbnail" src="https://honeylemonade.oss-cn-beijing.aliyuncs.com/blog/IT/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/network%E5%B0%81%E9%9D%A2.png" alt="【计算机网络】概述">
+        </span>
+    </div>
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+            【计算机网络】概述
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-11-20T06:32:38.022Z"><i
+                        class="far fa-calendar-alt">&nbsp;</i>2019-11-20</time>
+                
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-11-20T07:12:01.875Z"><i
+                        class="far fa-calendar-check">&nbsp;</i>2019-11-20</time>
+                
+                
+                <i style="color: #7a7a7a;" class="fa fa-folder-open">&nbsp;</i>
+                <div class="level-item">
+                    <a class="has-link-grey -link" href="/categories/IT/">IT</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/IT/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    14 分钟 读完 (大约 2042 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <hr style="height:1px;margin:1rem 0" />
+        <div class="content">
+            <!-- abstract-->
+<a id="more"></a>
+
+<h1 id="什么是计算机网络"><a href="#什么是计算机网络" class="headerlink" title="什么是计算机网络"></a>什么是计算机网络</h1><p>计算机网络主要是由一些通用的，可编程的硬件互相连接。这些硬件能够用来传输多种不同类型数据。计算机网络所连接的硬件不只包含计算机，智能手机也同样适用。</p>
+<h1 id="一些网络的概念"><a href="#一些网络的概念" class="headerlink" title="一些网络的概念"></a>一些网络的概念</h1><h2 id="互联网-internet"><a href="#互联网-internet" class="headerlink" title="互联网(internet)"></a>互联网(internet)</h2><p>字母i一定要小写！它的意思是“网络的网络”，凡是由能彼此通信的设备组成的网络就叫互联网，即使仅有两台机器（计算机、手机等），不论用何种技术使其彼此通信，都叫互联网。</p>
+<h2 id="因特网-Internet"><a href="#因特网-Internet" class="headerlink" title="因特网(Internet)"></a>因特网(Internet)</h2><p>因特网是基于TCP/IP协议实现的，TCP/IP协议由很多协议组成，不同类型的协议又被放在不同的层。其中，位于应用层的协议就有很多，比如FTP、SMTP、HTTP。所以，因特网提供的服务一般包括有：www（万维网）服务、电子邮件服务（outlook）、远程登录（QQ）服务、文件传输（FTP）服务、网络电话等等。</p>
+<h2 id="万维网-World-Wide-Web"><a href="#万维网-World-Wide-Web" class="headerlink" title="万维网(World Wide Web)"></a>万维网(World Wide Web)</h2><p>只要应用层使用的是HTTP协议，就称为万维网(World Wide Web)。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>互联网包含因特网，因特网包含万维网，要求越来越严苛。</p>
+<h1 id="计算机网络的分类"><a href="#计算机网络的分类" class="headerlink" title="计算机网络的分类"></a>计算机网络的分类</h1><p><strong>一，按作用范围分类</strong></p>
+<ol>
+<li>广域网WAN：作用范围通常为几十到几千公里，并且一般采用的都是高速链路</li>
+<li>城域网MAN：通常覆盖一个城市，用来将多个局域网互联</li>
+<li>局域网LAN：地域上看局域网通常是用在一座建筑物或某一部门使用</li>
+</ol>
+<p><strong>二，按使用者进行分类</strong></p>
+<ol>
+<li>公用网：电信公司等的大型网络服务。</li>
+<li>专用网：专门为某个部门服务的网络，例如军队，铁路，银行等。</li>
+</ol>
+<h1 id="性能指标"><a href="#性能指标" class="headerlink" title="性能指标"></a>性能指标</h1><h2 id="速率、带宽、吞吐量"><a href="#速率、带宽、吞吐量" class="headerlink" title="速率、带宽、吞吐量"></a>速率、带宽、吞吐量</h2><h3 id="速率"><a href="#速率" class="headerlink" title="速率"></a>速率</h3><p>比特（bit）是计算机中数据量的单位，意思是一个“二进制数字”，就是0或1。速率指的是连接在计算机网络上的主机在数字信道上<strong>传送数据的速率</strong>，其单位是bit/s（比特每秒，或b/s，bps[bit per second]），当数据率较高时，就可以用kbit/s、Mbit/s、Gbit/s或Tbit/s。</p>
+<h3 id="带宽"><a href="#带宽" class="headerlink" title="带宽"></a>带宽</h3><p>表示网络的通信线路传送数据的能力，即单位时间内，从网络一点到另一点所能通过的<strong>最高数据率</strong>，带宽越宽，其所能传输的“最高数据率”也越高，速率和带宽的关系类似于<strong>额定功率</strong>和<strong>最大功率</strong>。单位：b/s 、bps、Kbps、Mbps</p>
+<h3 id="吞吐量"><a href="#吞吐量" class="headerlink" title="吞吐量"></a>吞吐量</h3><p>单位时间内，网络中传递的<strong>实际</strong>的数据量，是一种速率单位。吞吐量受网络的带宽或网络的额定速率的限制。 对100Mb/s的以太网，其典型的吞吐量可能只有70Mb/s。</p>
+<h3 id="三者的联系"><a href="#三者的联系" class="headerlink" title="三者的联系"></a>三者的联系</h3><p>速率是额定或标称的，但是实际传输时，其实不稳定的，吞吐量就是取实际传输时的平均值。而带宽是理论上最大的速度。</p>
+<p>假设你从学校骑电动车回家，这条公路限速80km/h，这就可以理解成“带宽”，也就是“最高传输速率”。所骑电动车厂家宣称最高时速30km/h，这可以理解成“速率”，也就是“额定速率或标称速率”。但是你不可能全程以30km/h速度行驶，可能会碰到红灯或者堵车，这时你的速度就会放慢了，这条路的长度除以你行驶时间所得平均行驶速度，就可以理解成“吞吐量”。</p>
+<h2 id="其他指标"><a href="#其他指标" class="headerlink" title="其他指标"></a>其他指标</h2><h4 id="时延"><a href="#时延" class="headerlink" title="时延"></a>时延</h4><p><img src="https://honeylemonade.oss-cn-beijing.aliyuncs.com/blog/IT/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/Snipaste_2019-11-20_14-42-51.jpg" alt></p>
+<ol>
+<li>处理时延：主机或路由器在接收分组时需要花费一定的时间进行处理</li>
+<li>排队时延：分组在经过网络传输时，要经过许多的路由器。但分组在进入路由器后要先在输入队列中排队等待处理</li>
+<li>发送时延：发送时延是主机或路由器发送数据帧所需要的时间，即从数据帧的第一个比特算起，到最后一个比特发送完毕的所需时间。</li>
+<li>传播时延：传播时延是电磁波在信道中传播一定距离需要花费的时间</li>
+</ol>
+<h4 id="时延带宽积"><a href="#时延带宽积" class="headerlink" title="时延带宽积"></a>时延带宽积</h4><p><code>时延带宽积=传播时延×带宽</code>。链路像一条空心圆柱形管道，时延带宽积就表示这个管道的体积，表示这样的链路可以容纳多少个比特。</p>
+<h4 id="往返时间RTT"><a href="#往返时间RTT" class="headerlink" title="往返时间RTT"></a>往返时间RTT</h4><p>表示从发送方发送数据开始，到发送方接收到来自接收方的确认，总共经历的时间。</p>
+<h4 id="利用率"><a href="#利用率" class="headerlink" title="利用率"></a>利用率</h4><ol>
+<li>信道利用率：某信道有百分之几的时间是被利用的（有数据通过），并非越高越好。</li>
+<li>网络利用率：全网络的信道利用率的加权平均值。</li>
+</ol>
+<h1 id="层次的划分"><a href="#层次的划分" class="headerlink" title="层次的划分"></a>层次的划分</h1><p><img src="https://honeylemonade.oss-cn-beijing.aliyuncs.com/blog/IT/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/Snipaste_2019-11-20_14-43-43.jpg" alt></p>
+<p>OSI包含了七层协议，虽然理论完整，但是既复杂，又不实用。</p>
+<p>TCP/IP的四层协议，体系简单，得到了<strong>广泛应用</strong>。</p>
+<p>为了学习我们折中，采用”五层协议“，如图</p>
+<h2 id="物理层"><a href="#物理层" class="headerlink" title="物理层"></a>物理层</h2><p>考虑的是怎样在传输介质上传输数据比特流。物理层的作用是尽可能屏蔽传输媒体和通信手段的差异，使数据链路层感觉不到这些差异。</p>
+<p>说白了就是尽量传输想表达的原生信息。</p>
+<h2 id="数据链路层"><a href="#数据链路层" class="headerlink" title="数据链路层"></a>数据链路层</h2><p>网络层针对的还是主机之间的数据传输服务，而主机之间可以有很多链路，链路层协议就是为相邻结点之间提供服务。数据链路层把网络层传来的分组封装成帧。</p>
+<p>说白了就是对数据进行校验，留下正确的信息，丢掉错误的信息。通过MAC地址，完成了数据在同一网络中的传输。</p>
+<h2 id="网络层"><a href="#网络层" class="headerlink" title="网络层"></a>网络层</h2><p>通过ip，路由器等，完成了不同网络之间主机的通信。</p>
+<h2 id="运输层"><a href="#运输层" class="headerlink" title="运输层"></a>运输层</h2><p>提供的是不同主机的<strong>进程间</strong>的通用数据传输服务。</p>
+<p>运输层包括两种协议：</p>
+<ol>
+<li>传输控制协议 TCP，提供面向连接、可靠的数据传输服务，数据单位为报文段；TCP 主要提供完整性服务。</li>
+<li>用户数据报协议 UDP，提供无连接、尽最大努力的数据传输服务，数据单位为用户数据报。UDP 主要提供及时性服务。</li>
+</ol>
+<h2 id="应用层"><a href="#应用层" class="headerlink" title="应用层"></a>应用层</h2><p>为特定应用程序提供数据传输服务，例如 HTTP、DNS 等。数据单位为报文。</p>
+<h1 id="数据在各层之间的传递"><a href="#数据在各层之间的传递" class="headerlink" title="数据在各层之间的传递"></a>数据在各层之间的传递</h1><p><img src="https://honeylemonade.oss-cn-beijing.aliyuncs.com/blog/IT/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/Snipaste_2019-11-20_14-44-26.jpg" alt></p>
+<p>本质就是数据从AP1开始，不断被包装，最后通过信号传递到主机2，再不断拆包装，最终还原为原始的数据。</p>
+<p><img src="https://honeylemonade.oss-cn-beijing.aliyuncs.com/blog/IT/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/Snipaste_2019-11-20_14-45-12.jpg" alt></p>
+<h1 id="各层协议结构"><a href="#各层协议结构" class="headerlink" title="各层协议结构"></a>各层协议结构</h1><p><img src="https://honeylemonade.oss-cn-beijing.aliyuncs.com/blog/IT/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/Snipaste_2019-11-20_14-46-00.jpg" alt></p>
+
+        </div>
+        
+        <hr style="height:1px;margin:1rem 0" />
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <i class="fas fa-tags has-text-grey"></i>&nbsp;
+                    <a class="has-link-grey -link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev"
+                href="/2019/11/20/IT/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E3%80%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E3%80%91%E7%89%A9%E7%90%86%E5%B1%82/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">【计算机网络】物理层</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next"
+                href="/2019/11/20/IT/java/%E3%80%90Java%E3%80%91%E6%95%B0%E7%BB%84%E4%B8%8E%E9%9B%86%E5%90%88/">
+                <span class="level-item">【Java】数组与集合</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+
+<div class="card widget column-left is-sticky" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#什么是计算机网络">
+        <span class="has-mr-6">1</span>
+        <span>什么是计算机网络</span>
+        </a></li><li>
+        <a class="is-flex" href="#一些网络的概念">
+        <span class="has-mr-6">2</span>
+        <span>一些网络的概念</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#互联网-internet">
+        <span class="has-mr-6">2.1</span>
+        <span>互联网(internet)</span>
+        </a></li><li>
+        <a class="is-flex" href="#因特网-Internet">
+        <span class="has-mr-6">2.2</span>
+        <span>因特网(Internet)</span>
+        </a></li><li>
+        <a class="is-flex" href="#万维网-World-Wide-Web">
+        <span class="has-mr-6">2.3</span>
+        <span>万维网(World Wide Web)</span>
+        </a></li><li>
+        <a class="is-flex" href="#总结">
+        <span class="has-mr-6">2.4</span>
+        <span>总结</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#计算机网络的分类">
+        <span class="has-mr-6">3</span>
+        <span>计算机网络的分类</span>
+        </a></li><li>
+        <a class="is-flex" href="#性能指标">
+        <span class="has-mr-6">4</span>
+        <span>性能指标</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#速率、带宽、吞吐量">
+        <span class="has-mr-6">4.1</span>
+        <span>速率、带宽、吞吐量</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#速率">
+        <span class="has-mr-6">4.1.1</span>
+        <span>速率</span>
+        </a></li><li>
+        <a class="is-flex" href="#带宽">
+        <span class="has-mr-6">4.1.2</span>
+        <span>带宽</span>
+        </a></li><li>
+        <a class="is-flex" href="#吞吐量">
+        <span class="has-mr-6">4.1.3</span>
+        <span>吞吐量</span>
+        </a></li><li>
+        <a class="is-flex" href="#三者的联系">
+        <span class="has-mr-6">4.1.4</span>
+        <span>三者的联系</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#其他指标">
+        <span class="has-mr-6">4.2</span>
+        <span>其他指标</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#层次的划分">
+        <span class="has-mr-6">5</span>
+        <span>层次的划分</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#物理层">
+        <span class="has-mr-6">5.1</span>
+        <span>物理层</span>
+        </a></li><li>
+        <a class="is-flex" href="#数据链路层">
+        <span class="has-mr-6">5.2</span>
+        <span>数据链路层</span>
+        </a></li><li>
+        <a class="is-flex" href="#网络层">
+        <span class="has-mr-6">5.3</span>
+        <span>网络层</span>
+        </a></li><li>
+        <a class="is-flex" href="#运输层">
+        <span class="has-mr-6">5.4</span>
+        <span>运输层</span>
+        </a></li><li>
+        <a class="is-flex" href="#应用层">
+        <span class="has-mr-6">5.5</span>
+        <span>应用层</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#数据在各层之间的传递">
+        <span class="has-mr-6">6</span>
+        <span>数据在各层之间的传递</span>
+        </a></li><li>
+        <a class="is-flex" href="#各层协议结构">
+        <span class="has-mr-6">7</span>
+        <span>各层协议结构</span>
+        </a></li></ul>
+        </div>
+    </div>
+</div>
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.png" alt="【计算机网络】概述" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2019 Honey Lemonade&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="GitHub" href="https://github.com/Honeylemonade">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+<script>
+var IcarusThemeSettings = {
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+    
+    
+<script src="/js/animation.js"></script>
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+    
+    
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/" target="_blank" rel="noopener">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+    
+    
+<a id="back-to-top" title="回到顶端">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
