@@ -13,11 +13,11 @@
     <meta name="keywords" content="操作系统">
 <meta property="og:type" content="article">
 <meta property="og:title" content="【操作系统】进程，线程与多核处理">
-<meta property="og:url" content="https:&#x2F;&#x2F;honeylemonade.github.io&#x2F;2019&#x2F;11&#x2F;21&#x2F;IT&#x2F;%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F&#x2F;%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91&#x2F;index.html">
+<meta property="og:url" content="https:&#x2F;&#x2F;honeylemonade.github.io&#x2F;2019&#x2F;11&#x2F;21&#x2F;IT&#x2F;%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F&#x2F;%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E8%BF%9B%E7%A8%8B%EF%BC%8C%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%A4%9A%E6%A0%B8%E5%A4%84%E7%90%86&#x2F;index.html">
 <meta property="og:site_name" content="Honey Lemonade&#39;s blog">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https:&#x2F;&#x2F;honeylemonade.oss-cn-beijing.aliyuncs.com&#x2F;blog&#x2F;IT&#x2F;%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F&#x2F;operating%20system.jpg">
-<meta property="og:updated_time" content="2019-11-21T14:38:56.301Z">
+<meta property="og:updated_time" content="2019-11-21T14:43:36.417Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;honeylemonade.oss-cn-beijing.aliyuncs.com&#x2F;blog&#x2F;IT&#x2F;%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F&#x2F;operating%20system.jpg">
 
@@ -151,7 +151,7 @@
                 <time class="level-item has-text-grey" datetime="2019-11-21T14:20:22.675Z"><i
                         class="far fa-calendar-alt">&nbsp;</i>2019-11-21</time>
                 
-                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-11-21T14:38:56.301Z"><i
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-11-21T14:43:36.417Z"><i
                         class="far fa-calendar-check">&nbsp;</i>2019-11-21</time>
                 
                 
@@ -164,7 +164,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    8 分钟 读完 (大约 1179 个字)
+                    8 分钟 读完 (大约 1256 个字)
                 </span>
                 
                 
@@ -248,6 +248,10 @@
 <li>等待</li>
 <li>线程让权（线程自己放弃cpu的使用）</li>
 </ol>
+<h1 id="进程通信和线程通信"><a href="#进程通信和线程通信" class="headerlink" title="进程通信和线程通信"></a>进程通信和线程通信</h1><p>进程通信是一种手段，而进程同步是一种目的。也可以说，为了能够达到进程同步的目的，需要让进程进行通信，传输一些进程同步所需要的信息。 </p>
+<blockquote>
+<p>待补充</p>
+</blockquote>
 <h1 id="多处理器，超线程和多核"><a href="#多处理器，超线程和多核" class="headerlink" title="多处理器，超线程和多核"></a>多处理器，超线程和多核</h1><p>你是个包工头，以前你只能指挥1个工人去盖一个房子。你就是一个核心，这1个工人就是一个线程。这叫单核单线程。<br>后来你觉得这么做太慢，一个工人搬砖时候完全可以多点工人去做其他的比如砌墙，打桩。后来你又招了一群工人。这叫单核多线程。<br>再后来你发现，你同时只能指挥一群人盖一个房子，为了加快盖房子速度，你又找了你兄弟做另一个包工头。这样就变成了多核多线程。</p>
 <ol>
 <li>多处理器结构：<ul>
@@ -336,8 +340,12 @@
         <span class="has-mr-6">1.2</span>
         <span>线程</span>
         </a></li></ul></li><li>
-        <a class="is-flex" href="#多处理器，超线程和多核">
+        <a class="is-flex" href="#进程通信和线程通信">
         <span class="has-mr-6">2</span>
+        <span>进程通信和线程通信</span>
+        </a></li><li>
+        <a class="is-flex" href="#多处理器，超线程和多核">
+        <span class="has-mr-6">3</span>
         <span>多处理器，超线程和多核</span>
         </a></li></ul>
         </div>
