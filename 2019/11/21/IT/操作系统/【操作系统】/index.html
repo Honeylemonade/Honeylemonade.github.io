@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.0.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>【操作系统】进程，线程与多核处理 - Honey Lemonade&#39;s blog</title>
+
+
+    <meta name="keywords" content="操作系统">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【操作系统】进程，线程与多核处理">
+<meta property="og:url" content="https:&#x2F;&#x2F;honeylemonade.github.io&#x2F;2019&#x2F;11&#x2F;21&#x2F;IT&#x2F;%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F&#x2F;%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91&#x2F;index.html">
+<meta property="og:site_name" content="Honey Lemonade&#39;s blog">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https:&#x2F;&#x2F;honeylemonade.oss-cn-beijing.aliyuncs.com&#x2F;blog&#x2F;operating system.jpg">
+<meta property="og:updated_time" content="2019-11-21T14:34:33.344Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;honeylemonade.oss-cn-beijing.aliyuncs.com&#x2F;blog&#x2F;operating system.jpg">
+
+
+
+
+
+
+
+<link rel="icon" href="https://honeylemonade.oss-cn-beijing.aliyuncs.com/blog/favicon.png">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.png" alt="【操作系统】进程，线程与多核处理" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/archives">Archives</a>
+                
+                <a class="navbar-item"
+                href="/categories">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags">Tags</a>
+                
+                <a class="navbar-item"
+                href="/about">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/Honeylemonade">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;" target="_blank" rel="noopener">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;" target="_blank" rel="noopener">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-image">
+        <span  class="image is-7by1">
+        <img class="thumbnail" src="https://honeylemonade.oss-cn-beijing.aliyuncs.com/blog/operating system.jpg" alt="【操作系统】进程，线程与多核处理">
+        </span>
+    </div>
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+            【操作系统】进程，线程与多核处理
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-11-21T14:20:22.675Z"><i
+                        class="far fa-calendar-alt">&nbsp;</i>2019-11-21</time>
+                
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-11-21T14:34:33.344Z"><i
+                        class="far fa-calendar-check">&nbsp;</i>2019-11-21</time>
+                
+                
+                <i style="color: #7a7a7a;" class="fa fa-folder-open">&nbsp;</i>
+                <div class="level-item">
+                    <a class="has-link-grey -link" href="/categories/IT/">IT</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/IT/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    8 分钟 读完 (大约 1179 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <hr style="height:1px;margin:1rem 0" />
+        <div class="content">
+            <!-- abstract-->
+<a id="more"></a>
+
+<h1 id="进程，线程与多核处理"><a href="#进程，线程与多核处理" class="headerlink" title="进程，线程与多核处理"></a>进程，线程与多核处理</h1><h2 id="进程"><a href="#进程" class="headerlink" title="进程"></a>进程</h2><blockquote>
+<p>引入进程的目的是为了使多个程序可以并发执行，以提高资源的利用率和系统的吞吐量。、</p>
+</blockquote>
+<p><strong>一，进程的概念</strong></p>
+<p>是一个具有一定独立功能的程序关于某个数据集合的一次运行活动。 qq，讯雷等都是一个进程。</p>
+<p>程序是一个静态概念，而进程是一个<strong>动态</strong>的概念，他着眼于活动运行过程。</p>
+<p><strong>进程是资源分配和调度的基本单位。</strong></p>
+<p>进程的特点：</p>
+<ul>
+<li>动态性：由产生，到消亡</li>
+<li>并发性：多个进程可以同时装入内存中</li>
+<li>独立性：进程是操作系统完成工作的基本单元</li>
+<li>异步性：各个并发的进程相互独立</li>
+<li>结构性：由程序段，数据段，进程控制块（PCB）组成</li>
+</ul>
+<p><strong>二，进程的实体</strong></p>
+<p>共由三部分组成</p>
+<ol>
+<li><p>程序：进程运行所对应的执行代码</p>
+</li>
+<li><p>数据集合：所用到的数据和开辟的工作区域</p>
+</li>
+<li><p>进程控制块（PCB）：</p>
+<ul>
+<li><p>用于描述和标志进程，包括进程名称，当前状态，进程的优先级等</p>
+</li>
+<li><p>PCB是进程存在的唯一标志</p>
+</li>
+</ul>
+</li>
+</ol>
+<p><strong>三，进程的状态与转换</strong></p>
+<p><img src="https://honeylemonade.oss-cn-beijing.aliyuncs.com/blog/IT/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/20191121222854.png" alt></p>
+<p>进程的三种基本状态：</p>
+<ol>
+<li>就绪状态</li>
+<li>执行状态</li>
+<li>阻塞状态（等待状态）</li>
+</ol>
+<p><strong>四，进程控制</strong></p>
+<p><strong>内核：</strong>是操作系统中最常用，最核心的内容，他可以对进程进行控制，在操作系统中必须设置一个机构，他具有创建进程，撤销进程以及其他管理功能。</p>
+<p>通过内核中定义的“<strong>原语</strong>”来控制进程，原语可分为四大类：</p>
+<ol>
+<li>创建原语</li>
+<li>撤销原语</li>
+<li>阻塞原语</li>
+<li>唤醒原语</li>
+</ol>
+<p><strong>原语的特点：</strong>一旦执行，不能中断。（<u>注意原语只能对进程操作，而不能操作线程</u>）</p>
+<h2 id="线程"><a href="#线程" class="headerlink" title="线程"></a>线程</h2><blockquote>
+<p>引入线程的目的是为了减少某个进程并发执行时所付出的时空开销</p>
+</blockquote>
+<p><strong>一，线程简介</strong></p>
+<p>线程是比进程更小的能独立运行的基本单位，因此，在为其创建，撤销和切换时，所需要付出的开销也就更少，因此能显著提高并发的程度。</p>
+<p>QQ 和浏览器是两个进程，浏览器进程里面有很多线程，例如 HTTP 请求线程、事件响应线程、渲染线程等等，线程的并发执行使得在浏览器中点击一个新链接从而发起 HTTP 请求时，浏览器还可以响应用户的其它事件。 </p>
+<p><strong>线程是系统调度的基本单位</strong></p>
+<p><strong>二，线程的状态</strong></p>
+<p>与进程类似，也包含：</p>
+<ol>
+<li>就绪状态</li>
+<li>执行状态</li>
+<li>阻塞状态（等待状态）</li>
+</ol>
+<p><strong>三，线程的控制</strong></p>
+<p>线程的控制是通过操作系统提供的“线程操作库”来控制的。</p>
+<p>常见的操作包括：</p>
+<ol>
+<li>创建</li>
+<li>撤销</li>
+<li>等待</li>
+<li>线程让权（线程自己放弃cpu的使用）</li>
+</ol>
+<h1 id="多处理器，超线程和多核"><a href="#多处理器，超线程和多核" class="headerlink" title="多处理器，超线程和多核"></a>多处理器，超线程和多核</h1><p>你是个包工头，以前你只能指挥1个工人去盖一个房子。你就是一个核心，这1个工人就是一个线程。这叫单核单线程。<br>后来你觉得这么做太慢，一个工人搬砖时候完全可以多点工人去做其他的比如砌墙，打桩。后来你又招了一群工人。这叫单核多线程。<br>再后来你发现，你同时只能指挥一群人盖一个房子，为了加快盖房子速度，你又找了你兄弟做另一个包工头。这样就变成了多核多线程。</p>
+<ol>
+<li>多处理器结构：<ul>
+<li>一个电脑有多个处理器，共同执行任务</li>
+<li>成本比较高</li>
+</ul>
+</li>
+<li>超线程：<ul>
+<li>与一般的并发不同，超线程是真正意义上的并行，宏观和微观上都是<strong>真并行</strong>的</li>
+<li>虽然可以让一个cpu同时执行任务，但是不像多个CPU资源是独立的，还是会存在阻塞的状态</li>
+</ul>
+</li>
+<li>多核结构：<ul>
+<li>一个CPU有多个<strong>执行核</strong>，每个核有自己的资源</li>
+</ul>
+</li>
+<li>多核超线程：<ul>
+<li>就是将多核和超线程结合在一起</li>
+</ul>
+</li>
+</ol>
+
+        </div>
+        
+        <hr style="height:1px;margin:1rem 0" />
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <i class="fas fa-tags has-text-grey"></i>&nbsp;
+                    <a class="has-link-grey -link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next"
+                href="/2019/11/20/IT/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E3%80%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E3%80%91%E7%BD%91%E7%BB%9C%E5%B1%82/">
+                <span class="level-item">【计算机网络】网络层</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+
+<div class="card widget column-left is-sticky" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#进程，线程与多核处理">
+        <span class="has-mr-6">1</span>
+        <span>进程，线程与多核处理</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#进程">
+        <span class="has-mr-6">1.1</span>
+        <span>进程</span>
+        </a></li><li>
+        <a class="is-flex" href="#线程">
+        <span class="has-mr-6">1.2</span>
+        <span>线程</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#多处理器，超线程和多核">
+        <span class="has-mr-6">2</span>
+        <span>多处理器，超线程和多核</span>
+        </a></li></ul>
+        </div>
+    </div>
+</div>
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.png" alt="【操作系统】进程，线程与多核处理" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2019 Honey Lemonade&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="GitHub" href="https://github.com/Honeylemonade">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+<script>
+var IcarusThemeSettings = {
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+    
+    
+<script src="/js/animation.js"></script>
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+    
+    
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/" target="_blank" rel="noopener">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+    
+    
+<a id="back-to-top" title="回到顶端">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
