@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.0.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>【操作系统】存储器管理 - Honey Lemonade&#39;s blog</title>
+
+
+    <meta name="keywords" content="操作系统">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【操作系统】存储器管理">
+<meta property="og:url" content="https:&#x2F;&#x2F;honeylemonade.github.io&#x2F;2019&#x2F;11&#x2F;22&#x2F;IT&#x2F;%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F&#x2F;%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E5%AD%98%E5%82%A8%E5%99%A8%E7%AE%A1%E7%90%86&#x2F;index.html">
+<meta property="og:site_name" content="Honey Lemonade&#39;s blog">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https:&#x2F;&#x2F;honeylemonade.oss-cn-beijing.aliyuncs.com&#x2F;blog&#x2F;IT&#x2F;%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F&#x2F;operating%20system.jpg">
+<meta property="og:updated_time" content="2019-11-23T02:07:19.880Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;honeylemonade.oss-cn-beijing.aliyuncs.com&#x2F;blog&#x2F;IT&#x2F;%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F&#x2F;operating%20system.jpg">
+
+
+
+
+
+
+
+<link rel="icon" href="https://honeylemonade.oss-cn-beijing.aliyuncs.com/blog/favicon.png">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.png" alt="【操作系统】存储器管理" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/archives">Archives</a>
+                
+                <a class="navbar-item"
+                href="/categories">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags">Tags</a>
+                
+                <a class="navbar-item"
+                href="/about">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/Honeylemonade">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;" target="_blank" rel="noopener">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;" target="_blank" rel="noopener">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-image">
+        <span  class="image is-7by1">
+        <img class="thumbnail" src="https://honeylemonade.oss-cn-beijing.aliyuncs.com/blog/IT/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/operating%20system.jpg" alt="【操作系统】存储器管理">
+        </span>
+    </div>
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+            【操作系统】存储器管理
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-11-22T07:57:41.059Z"><i
+                        class="far fa-calendar-alt">&nbsp;</i>2019-11-22</time>
+                
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-11-23T02:07:19.880Z"><i
+                        class="far fa-calendar-check">&nbsp;</i>2019-11-23</time>
+                
+                
+                <i style="color: #7a7a7a;" class="fa fa-folder-open">&nbsp;</i>
+                <div class="level-item">
+                    <a class="has-link-grey -link" href="/categories/IT/">IT</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/IT/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    17 分钟 读完 (大约 2516 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <hr style="height:1px;margin:1rem 0" />
+        <div class="content">
+            <!-- abstract-->
+<a id="more"></a>
+
+<h1 id="存储器"><a href="#存储器" class="headerlink" title="存储器"></a>存储器</h1><h2 id="存储器多级存储结构"><a href="#存储器多级存储结构" class="headerlink" title="存储器多级存储结构"></a>存储器多级存储结构</h2><img src="https://honeylemonade.oss-cn-beijing.aliyuncs.com/blog/IT/操作系统/20191122155727.png" style="zoom:50%;">
+
+<ul>
+<li>外部存储器：用于存储不立即使用的数据和程序</li>
+<li>主存储器：用于存储一个正在运行的程序</li>
+<li>高速缓冲存储器：用于存储CPU处理时的数据</li>
+</ul>
+<p><strong>功能</strong>：可以使数据传输更加平滑，节约资源，提高硬件利用率。</p>
+<h2 id="存取器空间的分类"><a href="#存取器空间的分类" class="headerlink" title="存取器空间的分类"></a>存取器空间的分类</h2><p>主存储器空间一般分为<strong>系统区</strong>和<strong>用户区</strong>：</p>
+<ul>
+<li>系统区：主要存放操作系统常驻内存部分，和一些系统软件常驻主存部分以及相关系统数据</li>
+<li>用户区：主要存放用户程序和数据</li>
+</ul>
+<h2 id="虚拟存储技术"><a href="#虚拟存储技术" class="headerlink" title="虚拟存储技术"></a>虚拟存储技术</h2><p>当我们的内存只有1G，而某个程序运行需要2G时，我们应该怎么运行这个程序呢？</p>
+<p><strong>解决办法是就是虚拟存储技术。</strong></p>
+<p>虚拟存储技术采用逻辑地址，内存中只存放程序当前所需数据，当有所需数据不在内存中时（这种情况叫作<strong>中断</strong>），会去磁盘中寻找相应数据放入主存中。</p>
+<p>例如，内存1G，程序运行需要2G内存，但是在运行时，处于计算状态的只有100M，所以我们只需要将这100M放入内存即可，当需要其他数据时，再从磁盘中取出放入内存中。</p>
+<h2 id="作业，程序，进程，线程"><a href="#作业，程序，进程，线程" class="headerlink" title="作业，程序，进程，线程"></a>作业，程序，进程，线程</h2><p>一个作业通常包括程序、数据和操作说明书3部分。每一个进程由PCB、程序和数据集合组成。这说明程序是进程的一部分，是进程的实体。因此，一个作业可划分为若干个进程来完成，而每一个进程有其实体——程序和数据集合。</p>
+<h2 id="单道程序和多道程序"><a href="#单道程序和多道程序" class="headerlink" title="单道程序和多道程序"></a>单道程序和多道程序</h2><p>多道程序设计技术是在计算机内存中同时存放几道相互独立的程序，使它们在管理程序控制下，相互穿插运行，两个或两个以上程序在计算机系统中共享着计算机系统资源。</p>
+<p>与之相对应的是单道程序，即在计算机内存中同一时刻只允许一个的程序运行。 </p>
+<h2 id="存储器的主要任务"><a href="#存储器的主要任务" class="headerlink" title="存储器的主要任务"></a>存储器的主要任务</h2><p>存储器的主要任务如下：</p>
+<ol>
+<li>使多道程序的并发能在不受干扰的环境中运行</li>
+<li>提高存储器利用率</li>
+<li>实现虚拟存储技术，逻辑上扩充主存空间，使大程序能在小主存中运行</li>
+<li>方便用户使用存储器，用户无需考虑存储器的分配，回收和保护等工作</li>
+</ol>
+<h1 id="存储分配的形式"><a href="#存储分配的形式" class="headerlink" title="存储分配的形式"></a>存储分配的形式</h1><p><u>存储分配要解决的问题是，多道程序之间如何共享主存的存储空间</u>。</p>
+<ol>
+<li>直接存储分配方式（不推荐）<ul>
+<li>通过实际物理存储地址直接操作内存</li>
+<li>要求知道存储器的可用空间有哪些，并且要知道其他程序已经应用了哪些存储空间</li>
+<li>使用起来很不方便，要求程序编写人员要了解硬件</li>
+</ul>
+</li>
+<li>静态存储分配（不推荐）<ul>
+<li>采用逻辑地址</li>
+<li>程序装入内存后，只有运行完毕，才会释放该空间，利用率较低</li>
+</ul>
+</li>
+<li>动态存储分配（推荐）<ul>
+<li>只将程序运行所需的一部分装入内存进行执行</li>
+<li>采用逻辑地址</li>
+<li>当不执行时，会释放占用内存</li>
+<li>可以动态的申请存储空间以满足程序的需求</li>
+<li>动态存储分配采用<strong>覆盖</strong>和<strong>交换</strong>技术实现</li>
+</ul>
+</li>
+</ol>
+<h1 id="地址的重定位"><a href="#地址的重定位" class="headerlink" title="地址的重定位"></a>地址的重定位</h1><p>为了实现动态存储分配，我们需要通过逻辑地址去映射物理地址。</p>
+<p>首先我们要了解<strong>逻辑地址</strong>和<strong>物理地址</strong></p>
+<ol>
+<li>逻辑地址是人们为了方便变成，用一些符号或名称表示的内存地址，是虚拟的。</li>
+<li>物理地址是实实在在对应存储器的地址。</li>
+</ol>
+<p>重定位，也叫<u>地址映射</u>，作用<strong>是将逻辑地址转换为物理地址</strong>，常用两种方法：</p>
+<ol>
+<li>静态地址重定位<ul>
+<li>地址变换只是在装入时一次完成，以后不改变</li>
+<li>优点：<ul>
+<li>实现容易</li>
+</ul>
+</li>
+<li>缺点：<ul>
+<li>用户必须分配一个连续的存储空间</li>
+<li>难以实现程序和数据的共享</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>动态地址重定位<ul>
+<li>通过硬件地址变换机构将逻辑地址转换为物理地址</li>
+<li>优点：<ul>
+<li>有利于提高主存的利用率和存储空间使用的灵活性</li>
+<li>有利于实现数据的共享</li>
+</ul>
+</li>
+<li>缺点：<ul>
+<li>实现存储器管理的软件比较复杂</li>
+<li>需要附加的硬件支持</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h1 id="覆盖与交换"><a href="#覆盖与交换" class="headerlink" title="覆盖与交换"></a>覆盖与交换</h1><p><strong>覆盖和交换是从逻辑上扩充主存的两种方法，解决了在较小主存空间中如何执行大程序的问题。</strong></p>
+<h2 id="覆盖"><a href="#覆盖" class="headerlink" title="覆盖"></a>覆盖</h2><img src="https://honeylemonade.oss-cn-beijing.aliyuncs.com/blog/IT/操作系统/20191122182129.png" style="zoom: 67%;">
+
+<p>当CPU要求某一段程序执行时，才将该程序装入主存中覆盖以前的某一段程序。</p>
+<p>要求程序设计人员给出程序段之间的覆盖结构，主要在同一个进程或作业中进行。</p>
+<p><strong>可以在较小的存储空间中运行容量较大的进程或作业。</strong></p>
+<h2 id="交换"><a href="#交换" class="headerlink" title="交换"></a>交换</h2><p>将系统暂时不用的程序或数据部分从主存中调出来，以腾出更大的存储空间。</p>
+<p>主要在进程或作业之间进行。</p>
+<p><strong>可以在较小的存储空间中运行较多的进程或作业。</strong></p>
+<h1 id="单道环境下的存储管理"><a href="#单道环境下的存储管理" class="headerlink" title="单道环境下的存储管理"></a>单道环境下的存储管理</h1><p><img src="../../../../../%E8%B5%84%E6%96%99%E6%96%87%E6%A1%A3/%E5%BD%93%E5%89%8D%E6%89%A7%E8%A1%8C%E6%96%87%E6%A1%A3/MyNote/img/1571630299114.png" alt="1571630299114"></p>
+<p>单道系统的存储空间一般划分为三部分：系统区，用户区，剩余空间区。</p>
+<p><strong>采用单一连续区存储管理，同一时刻只允许一个用户进程使用</strong>，主要采用静态存储分配方式，即用户程序一旦调入主存后，必须等到该程序执行结束后才能释放主存空间。</p>
+<p><strong>这种方式的特点：</strong></p>
+<ul>
+<li>优点：<ul>
+<li>管理简单</li>
+<li>只需要很少的软硬件支持</li>
+</ul>
+</li>
+<li>缺点：<ul>
+<li>系统存储空间浪费较大</li>
+<li>执行效率低</li>
+<li>数据不能共享</li>
+</ul>
+</li>
+</ul>
+<h1 id="多道程序的存储管理"><a href="#多道程序的存储管理" class="headerlink" title="多道程序的存储管理"></a>多道程序的存储管理</h1><h2 id="分区存储管理"><a href="#分区存储管理" class="headerlink" title="分区存储管理"></a>分区存储管理</h2><h3 id="固定分区法"><a href="#固定分区法" class="headerlink" title="固定分区法"></a>固定分区法</h3><img src="https://honeylemonade.oss-cn-beijing.aliyuncs.com/blog/IT/操作系统/20191123091846.png" style="zoom:67%;">
+
+<p>固态分区是指系统在初始化时，将主存空间划分为若干固定大小的区域，用户进程在执行过程中，不允许改变划分区域的大小。</p>
+<p><strong>缺点：</strong>不能充分利用存储器资源，有一部分内存会由于未被进程占用而浪费，这一部分浪费称为“碎拼”或“内零头”</p>
+<h3 id="动态分区法"><a href="#动态分区法" class="headerlink" title="动态分区法"></a>动态分区法</h3><img src="https://honeylemonade.oss-cn-beijing.aliyuncs.com/blog/IT/操作系统/20191123092243.png" style="zoom:67%;">
+
+<p>采用动态分区时，主存部分只有一个空闲区域，随后根据程序大小分配合适的存储空间。</p>
+<p><strong>缺点：</strong>在程序运行时，有些数据是当前不需要的，而这部分数据仍然占据内存空间，导致空间利用率低。</p>
+<h3 id="分区存储管理的优缺点"><a href="#分区存储管理的优缺点" class="headerlink" title="分区存储管理的优缺点"></a>分区存储管理的优缺点</h3><ul>
+<li>优点：<ul>
+<li>要求的硬件支持少，管理容易，实现简单</li>
+</ul>
+</li>
+<li>缺点：<ul>
+<li>由于每次装入的都是一整个程序，有些程序数据不会被利用，导致内存资源利用率低</li>
+<li>当内存有一定空间时，由于不能满足某个作业的所需大小，这块内存空间就会被闲置，导致浪费。</li>
+<li>没有实现虚拟存储,即在小内存的计算机中，不能运行需要大内存才能运行的程序。</li>
+</ul>
+</li>
+</ul>
+<h2 id="页式存储管理"><a href="#页式存储管理" class="headerlink" title="页式存储管理"></a>页式存储管理</h2><p>页式管理的思想是：<strong>将程序分配在不连续的大小相同的存储区域中，实现主存“见缝插针”式的分配，同时保证作业的连续执行。</strong></p>
+<p>页式存储取消了存储分配的连续性，他能使用户进程分配到不连续的存储单元中。</p>
+<h3 id="静态页式存储管理"><a href="#静态页式存储管理" class="headerlink" title="静态页式存储管理"></a>静态页式存储管理</h3><p>静态页式存储管理是指用户作业在开始执行以前，将作业的程序和数据<strong>全部装入到主存中</strong>（数同一作业数据在内存中的可以使分散的），然后，操作系统通过地址转换，利用逻辑地址完成相应操作。</p>
+<p><strong>缺点</strong>：无法实现虚拟存储技术</p>
+<h3 id="虚拟页式存储管理"><a href="#虚拟页式存储管理" class="headerlink" title="虚拟页式存储管理"></a>虚拟页式存储管理</h3><p>采用了虚拟存储技术，在用户作业开始执行以前，只将运行时所需数据存入主存中，而后利用逻辑地址完成相应操作。</p>
+<p>当出现所需数据不在内存中时，这种情况叫做“<strong>缺页中断</strong>”，这时我们需要采用合适的<strong>页面置换算法</strong>，将磁盘中的所需数据替换掉内存中不需要的数据。</p>
+<h4 id="优化算法"><a href="#优化算法" class="headerlink" title="优化算法"></a>优化算法</h4><h4 id="先进先出算法"><a href="#先进先出算法" class="headerlink" title="先进先出算法"></a>先进先出算法</h4><h4 id="最近最少用置换算法"><a href="#最近最少用置换算法" class="headerlink" title="最近最少用置换算法"></a>最近最少用置换算法</h4><h4 id="时钟算法"><a href="#时钟算法" class="headerlink" title="时钟算法"></a>时钟算法</h4><h2 id="段式存储管理"><a href="#段式存储管理" class="headerlink" title="段式存储管理"></a>段式存储管理</h2><p>在页式存储管理中，要求用户程序的<strong>逻辑地址空间是连续的</strong>。就这要求用户源程序进行编译时，将各种数据按照线性装配，不方便，不灵活。</p>
+<p>而段式存储管理把用户作业按照功能分段，分别装入内存的不同位置</p>
+<h2 id="段页式存储管理"><a href="#段页式存储管理" class="headerlink" title="段页式存储管理"></a>段页式存储管理</h2><p>段页式即将段式和页式相结合，克服了上述两种方式的缺点。</p>
+
+        </div>
+        
+        <hr style="height:1px;margin:1rem 0" />
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <i class="fas fa-tags has-text-grey"></i>&nbsp;
+                    <a class="has-link-grey -link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next"
+                href="/2019/11/22/IT/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E5%A4%84%E7%90%86%E5%99%A8%E8%B0%83%E5%BA%A6/">
+                <span class="level-item">【操作系统】处理器调度</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+
+<div class="card widget column-left is-sticky" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#存储器">
+        <span class="has-mr-6">1</span>
+        <span>存储器</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#存储器多级存储结构">
+        <span class="has-mr-6">1.1</span>
+        <span>存储器多级存储结构</span>
+        </a></li><li>
+        <a class="is-flex" href="#存取器空间的分类">
+        <span class="has-mr-6">1.2</span>
+        <span>存取器空间的分类</span>
+        </a></li><li>
+        <a class="is-flex" href="#虚拟存储技术">
+        <span class="has-mr-6">1.3</span>
+        <span>虚拟存储技术</span>
+        </a></li><li>
+        <a class="is-flex" href="#作业，程序，进程，线程">
+        <span class="has-mr-6">1.4</span>
+        <span>作业，程序，进程，线程</span>
+        </a></li><li>
+        <a class="is-flex" href="#单道程序和多道程序">
+        <span class="has-mr-6">1.5</span>
+        <span>单道程序和多道程序</span>
+        </a></li><li>
+        <a class="is-flex" href="#存储器的主要任务">
+        <span class="has-mr-6">1.6</span>
+        <span>存储器的主要任务</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#存储分配的形式">
+        <span class="has-mr-6">2</span>
+        <span>存储分配的形式</span>
+        </a></li><li>
+        <a class="is-flex" href="#地址的重定位">
+        <span class="has-mr-6">3</span>
+        <span>地址的重定位</span>
+        </a></li><li>
+        <a class="is-flex" href="#覆盖与交换">
+        <span class="has-mr-6">4</span>
+        <span>覆盖与交换</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#覆盖">
+        <span class="has-mr-6">4.1</span>
+        <span>覆盖</span>
+        </a></li><li>
+        <a class="is-flex" href="#交换">
+        <span class="has-mr-6">4.2</span>
+        <span>交换</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#单道环境下的存储管理">
+        <span class="has-mr-6">5</span>
+        <span>单道环境下的存储管理</span>
+        </a></li><li>
+        <a class="is-flex" href="#多道程序的存储管理">
+        <span class="has-mr-6">6</span>
+        <span>多道程序的存储管理</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#分区存储管理">
+        <span class="has-mr-6">6.1</span>
+        <span>分区存储管理</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#固定分区法">
+        <span class="has-mr-6">6.1.1</span>
+        <span>固定分区法</span>
+        </a></li><li>
+        <a class="is-flex" href="#动态分区法">
+        <span class="has-mr-6">6.1.2</span>
+        <span>动态分区法</span>
+        </a></li><li>
+        <a class="is-flex" href="#分区存储管理的优缺点">
+        <span class="has-mr-6">6.1.3</span>
+        <span>分区存储管理的优缺点</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#页式存储管理">
+        <span class="has-mr-6">6.2</span>
+        <span>页式存储管理</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#静态页式存储管理">
+        <span class="has-mr-6">6.2.1</span>
+        <span>静态页式存储管理</span>
+        </a></li><li>
+        <a class="is-flex" href="#虚拟页式存储管理">
+        <span class="has-mr-6">6.2.2</span>
+        <span>虚拟页式存储管理</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#段式存储管理">
+        <span class="has-mr-6">6.3</span>
+        <span>段式存储管理</span>
+        </a></li><li>
+        <a class="is-flex" href="#段页式存储管理">
+        <span class="has-mr-6">6.4</span>
+        <span>段页式存储管理</span>
+        </a></li></ul></li></ul>
+        </div>
+    </div>
+</div>
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.png" alt="【操作系统】存储器管理" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2019 Honey Lemonade&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="GitHub" href="https://github.com/Honeylemonade">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+<script>
+var IcarusThemeSettings = {
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+    
+    
+<script src="/js/animation.js"></script>
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+    
+    
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/" target="_blank" rel="noopener">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+    
+    
+<a id="back-to-top" title="回到顶端">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
