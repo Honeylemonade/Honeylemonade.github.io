@@ -7,17 +7,17 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>【算法】绪论 - Honey Lemonade&#39;s blog</title>
+<title>【算法】回溯法 - Honey Lemonade&#39;s blog</title>
 
 
     <meta name="keywords" content="算法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【算法】绪论">
-<meta property="og:url" content="https:&#x2F;&#x2F;honeylemonade.github.io&#x2F;2019&#x2F;11&#x2F;23&#x2F;IT&#x2F;%E7%AE%97%E6%B3%95&#x2F;%E3%80%90%E7%AE%97%E6%B3%95%E3%80%91%E7%BB%AA%E8%AE%BA&#x2F;index.html">
+<meta property="og:title" content="【算法】回溯法">
+<meta property="og:url" content="https:&#x2F;&#x2F;honeylemonade.github.io&#x2F;2019&#x2F;11&#x2F;23&#x2F;IT&#x2F;%E7%AE%97%E6%B3%95&#x2F;%E3%80%90%E7%AE%97%E6%B3%95%E3%80%91%E5%9B%9E%E6%BA%AF%E6%B3%95&#x2F;index.html">
 <meta property="og:site_name" content="Honey Lemonade&#39;s blog">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https:&#x2F;&#x2F;honeylemonade.oss-cn-beijing.aliyuncs.com&#x2F;blog&#x2F;IT&#x2F;算法&#x2F;Algorithms.jpg">
-<meta property="og:updated_time" content="2019-11-23T04:32:51.356Z">
+<meta property="og:updated_time" content="2019-11-23T06:08:29.220Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;honeylemonade.oss-cn-beijing.aliyuncs.com&#x2F;blog&#x2F;IT&#x2F;算法&#x2F;Algorithms.jpg">
 
@@ -77,7 +77,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.png" alt="【算法】绪论" height="28">
+                <img src="/images/logo.png" alt="【算法】回溯法" height="28">
             
             </a>
         </div>
@@ -135,23 +135,23 @@
     
     <div class="card-image">
         <span  class="image is-7by1">
-        <img class="thumbnail" src="https://honeylemonade.oss-cn-beijing.aliyuncs.com/blog/IT/算法/Algorithms.jpg" alt="【算法】绪论">
+        <img class="thumbnail" src="https://honeylemonade.oss-cn-beijing.aliyuncs.com/blog/IT/算法/Algorithms.jpg" alt="【算法】回溯法">
         </span>
     </div>
     
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-            【算法】绪论
+            【算法】回溯法
             
         </h1>
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-11-23T04:06:47.618Z"><i
+                <time class="level-item has-text-grey" datetime="2019-11-23T06:06:59.925Z"><i
                         class="far fa-calendar-alt">&nbsp;</i>2019-11-23</time>
                 
-                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-11-23T04:32:51.356Z"><i
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-11-23T06:08:29.220Z"><i
                         class="far fa-calendar-check">&nbsp;</i>2019-11-23</time>
                 
                 
@@ -164,7 +164,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    2 分钟 读完 (大约 226 个字)
+                    3 分钟 读完 (大约 380 个字)
                 </span>
                 
                 
@@ -176,26 +176,9 @@
             <!-- abstract-->
 <a id="more"></a>
 
-<h1 id="时间复杂度T-n"><a href="#时间复杂度T-n" class="headerlink" title="时间复杂度T(n)"></a>时间复杂度T(n)</h1><p>时间复杂度的公式是： <code>T(n) = O( f(n) )</code>；其中f(n) 表示每行代码执行次数之和，而 O 表示正比例关系，这个公式的全称是：<strong>算法的渐进时间复杂度</strong>。</p>
-<p>通常n取无穷大，那么一些<strong>常数</strong>就可以被省略</p>
-<p>常见的<strong>时间复杂度量级</strong>有：</p>
-<ul>
-<li>常数阶O(1)</li>
-<li>对数阶O(logN)</li>
-<li>线性阶O(n)</li>
-<li>线性对数阶O(nlogN)</li>
-<li>平方阶O(n²)</li>
-<li>立方阶O(n³)</li>
-<li>K次方阶O(n^k)</li>
-<li>指数阶(2^n)</li>
-</ul>
-<h1 id="空间复杂度"><a href="#空间复杂度" class="headerlink" title="空间复杂度"></a>空间复杂度</h1><p>空间复杂度的公式是： <code>S(n) = O( f(n) )</code>；空间复杂度并不是指算法实际占用的空间大小，而是指，随着量级n的变化，需要的<u>辅助空间</u>的大小。</p>
-<p><strong>常用的空间复杂度：</strong></p>
-<ul>
-<li>O(1)</li>
-<li>O(n)</li>
-<li>O(n²)</li>
-</ul>
+<h1 id="回溯法"><a href="#回溯法" class="headerlink" title="回溯法"></a>回溯法</h1><p> 在包含问题的所有解的解空间树中，按照<strong>深度优先搜索的策略</strong>，从根结点出发深度探索解空间树。当探索到某一结点时，要先判断该结点是否包含问题的解，如果包含，就从该结点出发继续探索下去，如果该结点不包含问题的解，则逐层向其祖先结点回溯。（其实回溯法就是对隐式图的深度优先搜索算法）。 </p>
+<h1 id="解题框架步骤"><a href="#解题框架步骤" class="headerlink" title="解题框架步骤"></a>解题框架步骤</h1><p>也是利用了递归，其实本质上也是一种“在所有情况中遍历出解”的方法</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">backtrack</span><span class="hljs-params">(<span class="hljs-keyword">int</span> t)</span>          <span class="hljs-comment">//t表示递归深度，即当前扩展节点在解空间树的深度</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123; </span><br><span class="line">    <span class="hljs-keyword">if</span> ( t &gt; n ) output(x);    <span class="hljs-comment">//n控制递归深度，如果算法已经搜索到叶节点，记录输出可行解X</span></span><br><span class="line">    <span class="hljs-keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = f(n,t) ; i &lt;= g(n,t) ; i++)  <span class="hljs-comment">//在深度t，i从未搜索过得起始编号到终止编号</span></span><br><span class="line">        &#123;</span><br><span class="line">            x[t] = h(i);       <span class="hljs-comment">//查看i这个点的值是否满足题目的要求</span></span><br><span class="line">            <span class="hljs-keyword">if</span>( constraint(t) &amp;&amp; bound(t)) </span><br><span class="line">                backtrack(t+<span class="hljs-number">1</span>)</span><br><span class="line">       <span class="hljs-comment">//constraint（t）为true表示在当前扩展节点处x[1:t]的取值满足问题的约束条件；</span></span><br><span class="line">       <span class="hljs-comment">//bound(t)为true表示当前扩展节点取值没有使目标函数越界；</span></span><br><span class="line">       <span class="hljs-comment">//为true表示还需要进一步的搜索子树，否则减去子树。</span></span><br><span class="line">         &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
         </div>
         
@@ -223,17 +206,17 @@
         
         <div class="level-start">
             <a class="level level-item has-link-grey  article-nav-prev"
-                href="/2019/11/23/IT/%E7%AE%97%E6%B3%95/%E3%80%90%E7%AE%97%E6%B3%95%E3%80%91%E5%88%86%E6%B2%BB%E7%AD%96%E7%95%A5/">
+                href="/2019/11/23/IT/%E7%AE%97%E6%B3%95/%E3%80%90%E7%AE%97%E6%B3%95%E3%80%91%E5%88%86%E6%94%AF%E9%99%90%E7%95%8C%E7%AE%97%E6%B3%95/">
                 <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">【算法】分治策略</span>
+                <span class="level-item">【算法】分支限界算法</span>
             </a>
         </div>
         
         
         <div class="level-end">
             <a class="level level-item has-link-grey  article-nav-next"
-                href="/2019/11/22/IT/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E5%AD%98%E5%82%A8%E5%99%A8%E7%AE%A1%E7%90%86/">
-                <span class="level-item">【操作系统】存储器管理</span>
+                href="/2019/11/23/IT/%E7%AE%97%E6%B3%95/%E3%80%90%E7%AE%97%E6%B3%95%E3%80%91%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/">
+                <span class="level-item">【算法】贪心算法</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -259,13 +242,13 @@
                 目录
             </h3>
             <ul class="menu-list"><li>
-        <a class="is-flex" href="#时间复杂度T-n">
+        <a class="is-flex" href="#回溯法">
         <span class="has-mr-6">1</span>
-        <span>时间复杂度T(n)</span>
+        <span>回溯法</span>
         </a></li><li>
-        <a class="is-flex" href="#空间复杂度">
+        <a class="is-flex" href="#解题框架步骤">
         <span class="has-mr-6">2</span>
-        <span>空间复杂度</span>
+        <span>解题框架步骤</span>
         </a></li></ul>
         </div>
     </div>
@@ -289,7 +272,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.png" alt="【算法】绪论" height="28">
+                    <img src="/images/logo.png" alt="【算法】回溯法" height="28">
                 
                 </a>
                 <p class="is-size-7">
