@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.0.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>【计算机网络】传输层 - Honey Lemonade&#39;s blog</title>
+
+
+    <meta name="keywords" content="计算机网络">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【计算机网络】传输层">
+<meta property="og:url" content="https:&#x2F;&#x2F;honeylemonade.github.io&#x2F;2019&#x2F;11&#x2F;26&#x2F;IT&#x2F;%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C&#x2F;%E3%80%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E3%80%91%E4%BC%A0%E8%BE%93%E5%B1%82&#x2F;index.html">
+<meta property="og:site_name" content="Honey Lemonade&#39;s blog">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https:&#x2F;&#x2F;honeylemonade.oss-cn-beijing.aliyuncs.com&#x2F;blog&#x2F;IT&#x2F;%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C&#x2F;network%E5%B0%81%E9%9D%A2.png">
+<meta property="og:updated_time" content="2019-11-26T11:23:38.589Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;honeylemonade.oss-cn-beijing.aliyuncs.com&#x2F;blog&#x2F;IT&#x2F;%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C&#x2F;network%E5%B0%81%E9%9D%A2.png">
+
+
+
+
+
+
+
+<link rel="icon" href="https://honeylemonade.oss-cn-beijing.aliyuncs.com/blog/favicon.png">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.png" alt="【计算机网络】传输层" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/archives">Archives</a>
+                
+                <a class="navbar-item"
+                href="/categories">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags">Tags</a>
+                
+                <a class="navbar-item"
+                href="/about">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/Honeylemonade">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                <a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;" target="_blank" rel="noopener">
+                    <i class="fas fa-list-ul"></i>
+                </a>
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;" target="_blank" rel="noopener">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-image">
+        <span  class="image is-7by1">
+        <img class="thumbnail" src="https://honeylemonade.oss-cn-beijing.aliyuncs.com/blog/IT/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/network%E5%B0%81%E9%9D%A2.png" alt="【计算机网络】传输层">
+        </span>
+    </div>
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+            【计算机网络】传输层
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-11-26T09:39:30.342Z"><i
+                        class="far fa-calendar-alt">&nbsp;</i>2019-11-26</time>
+                
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-11-26T11:23:38.589Z"><i
+                        class="far fa-calendar-check">&nbsp;</i>2019-11-26</time>
+                
+                
+                <i style="color: #7a7a7a;" class="fa fa-folder-open">&nbsp;</i>
+                <div class="level-item">
+                    <a class="has-link-grey -link" href="/categories/IT/">IT</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/IT/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/">计算机网络</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    17 分钟 读完 (大约 2576 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <hr style="height:1px;margin:1rem 0" />
+        <div class="content">
+            <!-- abstract-->
+<a id="more"></a>
+
+<h1 id="传输层概述"><a href="#传输层概述" class="headerlink" title="传输层概述"></a>传输层概述</h1><h2 id="传输层功能"><a href="#传输层功能" class="headerlink" title="传输层功能"></a>传输层功能</h2><p>一，实现了不用主机进程间的通信。</p>
+<ul>
+<li>在网络层，解决的是<strong>主机到主机</strong>的通信；利用IP地址</li>
+<li>在传输层，解决的是<strong>进程到进程</strong>的通信；利用套接字Socket（由IP地址+端口号组成）</li>
+</ul>
+<p>二，传输层对收到的报文进行差错检验</p>
+<h2 id="端口"><a href="#端口" class="headerlink" title="端口"></a>端口</h2><p>在程序层面传输数据，需要利用端口，来标明数据，类似于IP，一个ip地址代表一个主机，而<strong>一个端口代表一个程序</strong>。</p>
+<ul>
+<li>服务端端口号<ul>
+<li>熟知端口号：0-1023</li>
+<li>登记端口号：1024-49151</li>
+</ul>
+</li>
+<li>客户端端口号：49152-65535（随机分配的）</li>
+</ul>
+<p><strong>常用端口号如下：</strong></p>
+<table>
+<thead>
+<tr>
+<th>端口</th>
+<th>服务</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>20、21</td>
+<td>FTP</td>
+</tr>
+<tr>
+<td>22</td>
+<td>SSH</td>
+</tr>
+<tr>
+<td>80</td>
+<td>HTTP</td>
+</tr>
+<tr>
+<td>443</td>
+<td>HTTPS</td>
+</tr>
+<tr>
+<td>53</td>
+<td>DNS</td>
+</tr>
+</tbody></table>
+<h1 id="用户数据报协议UDP"><a href="#用户数据报协议UDP" class="headerlink" title="用户数据报协议UDP"></a>用户数据报协议UDP</h1><h2 id="UDP概述"><a href="#UDP概述" class="headerlink" title="UDP概述"></a>UDP概述</h2><ol>
+<li>无连接的</li>
+<li>不可靠交付，出错直接丢弃</li>
+<li>面向报文的：一次发送一个完整的报文</li>
+<li>用来传输少量数据</li>
+<li>无拥塞控制，延时小，适合于直播，网络电话</li>
+</ol>
+<h2 id="UDP的首部格式"><a href="#UDP的首部格式" class="headerlink" title="UDP的首部格式"></a>UDP的首部格式</h2><p><img src="https://honeylemonade.oss-cn-beijing.aliyuncs.com/blog/IT/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/20191126180600.png" alt></p>
+<p>UDP首部字段很简单，由4个字段组成（其中伪首部会被丢弃），每个字段的长度都是两个字节，<strong>共8字节</strong></p>
+<ul>
+<li><strong>源端口</strong> 原端口号，在需要对方回信时选用，不需要时可全0</li>
+<li><strong>目的端口</strong> 目的端口号，这在终点交付报文时必须使用，不然数据交给谁呢？</li>
+<li><strong>长度</strong> UDP的长度，最小值为8字节，仅有首部</li>
+<li><strong>检验和</strong> 检测用户数据报在传输过程是否有错，有错就丢弃。</li>
+</ul>
+<p>在传输的过程中，如果接收方UDP发现收到的报文中的目的端口不存在，会直接丢弃，然后由网际控制报文协议ICMP给发送方发送“端口不可达”差错报文。</p>
+<p><strong>伪首部</strong>不在网络中传输，只是在计算检验和，不向下传递也不向上递交。</p>
+<h1 id="传输控制协议TCP"><a href="#传输控制协议TCP" class="headerlink" title="传输控制协议TCP"></a>传输控制协议TCP</h1><h2 id="TCP概述"><a href="#TCP概述" class="headerlink" title="TCP概述"></a>TCP概述</h2><ol>
+<li>面向连接的传输协议</li>
+<li>提供可靠交付服务，无差错</li>
+<li>全双工的通信。</li>
+<li>面向字节流的，会把文件分成多个</li>
+</ol>
+<h2 id="TCP报文段首部"><a href="#TCP报文段首部" class="headerlink" title="TCP报文段首部"></a>TCP报文段首部</h2><p><img src="https://honeylemonade.oss-cn-beijing.aliyuncs.com/blog/IT/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/20191126181707.png" alt></p>
+<p><strong>源端口和目的端口</strong> 各占两个字节，TCP的分用功能也是通过端口实现的。</p>
+<p><strong>序号</strong> 占4个字节，范围是[0,232],TCP是面向字节流的，每个字节都是按顺序编号。例如一个报文段，序号字段是201，携带数据长度是100，那么第一个数据的序号就是201，最后一个就是300。当达到最大范围，又从0开始。</p>
+<p><strong>确认号</strong> 占4个字节，是期望收到对方下一个报文段的第一个字节的序号。并且确认号为N,则表示序号N前所有的数据已经正确收到了。</p>
+<p><strong>数据偏移</strong> 占4位，表示报文段的数据部分的起始位置，距离整个报文段的起始位置的距离。间接的指出首部的长度。</p>
+<p><strong>保留</strong> 占6位，保留使用，目前为0.</p>
+<p><strong>URG（紧急）</strong> 当URG=1,表明紧急指针字段有效，该报文段有紧急数据，应尽快发送。</p>
+<p><strong>ACK(确认)</strong> 仅当ACK=1时，确认号才有效，连接建立后，所有的报文段ACK都为1。</p>
+<p><strong>PSH(推送)</strong> 接收方接收到PSH=1的报文段，会尽快交付接收应用经常，不再等待整个缓存填满再交付。实际较少使用。</p>
+<p><strong>RST(复位)</strong> RST=1时，表明TCP连接中出现严重差错，必须是否连接，再重连。</p>
+<p><strong>SYN(同步)</strong> 在建立连接时用来同步序号。当SYN=1,ACK=0，则表明是一个连接请求报文段。SYN=1,ACK=1则表示对方同意连接。TCP建立连接用到。</p>
+<p><strong>FIN(终止)</strong> 用来释放一个连接窗口。当FIN=1时，表明此报文段的发送方不再发送数据，请求释放单向连接。TCP断开连接用到。</p>
+<p><strong>窗口</strong> 占2个字节，表示发送方自己的接收窗口，窗口值用来告诉对方允许发送的数据量。</p>
+<p><strong>校验和</strong> 占2字节，检验和字段查验范围包括首部和数据部分。</p>
+<p><strong>紧急指针</strong> 占2字节，URG=1时，紧急指针指出本报文段中的紧急数据的字节数（紧急字节数结束后为普通字节）。</p>
+<p><strong>选项</strong> 长度可变，最长可达40字节。例如最大报文段长度MSS。MSS指的是数据部分的长度而不是整个TCP报文段长度，MSS默认为536字节长。窗口扩大，时间戳选项等</p>
+<h2 id="TCP连接管理"><a href="#TCP连接管理" class="headerlink" title="TCP连接管理"></a>TCP连接管理</h2><h3 id="TCP建立连接-三次握手"><a href="#TCP建立连接-三次握手" class="headerlink" title="TCP建立连接-三次握手"></a>TCP建立连接-三次握手</h3><p><img src="https://honeylemonade.oss-cn-beijing.aliyuncs.com/blog/IT/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/20191126185659.png" alt></p>
+<p><strong>第一次</strong>：客户端发送连接请求报文给服务端，其中SYN=1,seq=x。发送完毕后进入SYN_END状态。</p>
+<p><strong>第二次</strong>：服务端接收到报文后，发回确认报文，其中ACK=1,ack=x+1，因为需要客户端确认，所以报文中也有SYN=1,seq=y的信息。发送完后进入SYN_RCVD状态。</p>
+<p><strong>第三次</strong>:客户端接收到报文后,发送确认报文，其中ACK=1,ack=y+1。发送完客户端进入<code>ESTABLISHED</code>状态，服务端接收到报文后，进入<code>ESTABLISHED</code>状态。到此，连接建立完成。</p>
+<p><strong>三次握手原因</strong></p>
+<p>避免资源被浪费掉。如果在第二步握手时，由于网络延迟导致确认包不能及时到达客户端，那么客户端会认为第一次握手失败，再次发送连接请求，服务端收到后再次发送确认包。在这种情况下，服务端已经创建了两次连接，等待两个客户端发送数据，而实际却只有一个客户端发送数据。</p>
+<h3 id="TCP断开连接-四次挥手"><a href="#TCP断开连接-四次挥手" class="headerlink" title="TCP断开连接-四次挥手"></a>TCP断开连接-四次挥手</h3><p><img src="https://honeylemonade.oss-cn-beijing.aliyuncs.com/blog/IT/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/20191126190210.png" alt></p>
+<p><strong>第一次挥手</strong>：客户端发送FIN=1，seq=x的包给服务端，表示自己没有数据要进行传输，单面连接传输要关闭。发送完后，客户端进入状态。</p>
+<p><strong>第二次挥手</strong>：服务端收到请求包后，发回ACK=1,ack=x+1的确认包，表示确认断开连接。服务端进<code>入CLOSE_WAIT</code>状态。客户端收到该包后，进入<code>FIN_WAIT_2</code>状态。此时客户端到服务端的数据连接已断开。</p>
+<p><strong>第三次挥手</strong>：服务端发送FIN=1,seq=y的包给客户端，表示自己没有数据要给客户端了。发送完后进入<code>LAST_ACK</code>状态，等待客户端的确认包。</p>
+<p><strong>第四次挥手</strong>：客户端收到请求包后，发送ACK=1,ack=y+1的确认包给服务端，并进入<code>TIME_WAIT</code>状态，有可能要重传确认包。服务端收到确认包后，进入<code>CLOSED</code>状态，服务端到客户端的连接已断开。客户端等到一段时间后也会进入<code>CLOSED</code>状态。</p>
+<p><strong>四次挥手原因</strong> 由于TCP的连接是全双工，双方都可以主动传输数据，一方的断开需要告知对方，让对方可以相关操作，负责任的表现。</p>
+<h2 id="TCP可靠传输的实现"><a href="#TCP可靠传输的实现" class="headerlink" title="TCP可靠传输的实现"></a>TCP可靠传输的实现</h2><h3 id="确认和超时重传"><a href="#确认和超时重传" class="headerlink" title="确认和超时重传"></a>确认和超时重传</h3><h2 id="TCP流量控制"><a href="#TCP流量控制" class="headerlink" title="TCP流量控制"></a>TCP流量控制</h2><h4 id="滑动窗口协议"><a href="#滑动窗口协议" class="headerlink" title="滑动窗口协议"></a>滑动窗口协议</h4><p>TCP滑动窗口协议主要为了解决在网络传输数据的过程中，发送方和接收方传输数据速率不一致的问题，从而保证数据传输的可靠性，达到流量控制的效果。 发送方中的数据分为三种：</p>
+<ul>
+<li>发送已确认</li>
+<li>发送未确认</li>
+<li>未发送</li>
+</ul>
+<p>接收方数据分为三种：</p>
+<ul>
+<li>已接收和确认但未被上层读取</li>
+<li>接收未确认</li>
+</ul>
+<p>在发送方的滑动窗口中，可分为发送窗口和可用窗口。发送窗口中的数据已发送接收方，但未接到接收方的确认；可用窗口则表示发送方还可以发送多少数据。发送方的窗口大小会受到接收方窗口的改变而改变。</p>
+<p><img src="https://honeylemonade.oss-cn-beijing.aliyuncs.com/blog/IT/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/20191126191424.png" alt></p>
+<h2 id="TCP拥塞控制"><a href="#TCP拥塞控制" class="headerlink" title="TCP拥塞控制"></a>TCP拥塞控制</h2><h4 id="拥塞"><a href="#拥塞" class="headerlink" title="拥塞"></a>拥塞</h4><p>什么是拥塞呢，在某段时间，若对网络中某一资源的需求超过了该资源所能提供的可用部分，网络性能就会变坏了，这种情况就叫拥塞。网络资源常指网络链路容量（带宽）、交换结点中的缓存和交换处理机。</p>
+<p>当出现拥塞，条件允许一般都是通过添加网络资源，例如带宽换成更大的，但这治标不治本，而且不一定总是有用。网络拥塞往往是有许多因素引起的，因此就需要拥塞控制了。</p>
+<h4 id="拥塞控制"><a href="#拥塞控制" class="headerlink" title="拥塞控制"></a>拥塞控制</h4><p><strong>拥塞控制指防止过多的的数据注入到网络中，这样可以使网络中的路由器或链路不过载</strong>。拥塞机制是一个全局性的过程，涉及到所有主机、所有路由器，以及与降低网络传输性能有光的所有因素。</p>
+<p>而滑动窗口协议的<strong>流量控制</strong>，是指点到点的通信量控制，是端到端的问题。</p>
+<h4 id="TCP的拥塞控制方法"><a href="#TCP的拥塞控制方法" class="headerlink" title="TCP的拥塞控制方法"></a>TCP的拥塞控制方法</h4><p>TCP进行拥塞控制的算法有四种：<strong>慢开始、拥塞避免、快重传、快恢复</strong>。</p>
+
+        </div>
+        
+        <hr style="height:1px;margin:1rem 0" />
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <i class="fas fa-tags has-text-grey"></i>&nbsp;
+                    <a class="has-link-grey -link" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag">计算机网络</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev"
+                href="/2019/11/26/IT/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E3%80%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E3%80%91%E5%BA%94%E7%94%A8%E5%B1%82/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">【计算机网络】应用层</span>
+            </a>
+        </div>
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next"
+                href="/2019/11/25/IT/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E6%96%87%E4%BB%B6%E7%AE%A1%E7%90%86/">
+                <span class="level-item">【操作系统】文件管理</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+
+<div class="card widget column-left is-sticky" id="toc">
+    <div class="card-content">
+        <div class="menu">
+            <h3 class="menu-label">
+                    <div class="menu" style="max-height: 400px; overflow: auto;">
+                目录
+            </h3>
+            <ul class="menu-list"><li>
+        <a class="is-flex" href="#传输层概述">
+        <span class="has-mr-6">1</span>
+        <span>传输层概述</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#传输层功能">
+        <span class="has-mr-6">1.1</span>
+        <span>传输层功能</span>
+        </a></li><li>
+        <a class="is-flex" href="#端口">
+        <span class="has-mr-6">1.2</span>
+        <span>端口</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#用户数据报协议UDP">
+        <span class="has-mr-6">2</span>
+        <span>用户数据报协议UDP</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#UDP概述">
+        <span class="has-mr-6">2.1</span>
+        <span>UDP概述</span>
+        </a></li><li>
+        <a class="is-flex" href="#UDP的首部格式">
+        <span class="has-mr-6">2.2</span>
+        <span>UDP的首部格式</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#传输控制协议TCP">
+        <span class="has-mr-6">3</span>
+        <span>传输控制协议TCP</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#TCP概述">
+        <span class="has-mr-6">3.1</span>
+        <span>TCP概述</span>
+        </a></li><li>
+        <a class="is-flex" href="#TCP报文段首部">
+        <span class="has-mr-6">3.2</span>
+        <span>TCP报文段首部</span>
+        </a></li><li>
+        <a class="is-flex" href="#TCP连接管理">
+        <span class="has-mr-6">3.3</span>
+        <span>TCP连接管理</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#TCP建立连接-三次握手">
+        <span class="has-mr-6">3.3.1</span>
+        <span>TCP建立连接-三次握手</span>
+        </a></li><li>
+        <a class="is-flex" href="#TCP断开连接-四次挥手">
+        <span class="has-mr-6">3.3.2</span>
+        <span>TCP断开连接-四次挥手</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#TCP可靠传输的实现">
+        <span class="has-mr-6">3.4</span>
+        <span>TCP可靠传输的实现</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#确认和超时重传">
+        <span class="has-mr-6">3.4.1</span>
+        <span>确认和超时重传</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#TCP流量控制">
+        <span class="has-mr-6">3.5</span>
+        <span>TCP流量控制</span>
+        </a></li><li>
+        <a class="is-flex" href="#TCP拥塞控制">
+        <span class="has-mr-6">3.6</span>
+        <span>TCP拥塞控制</span>
+        </a></li></ul></li></ul>
+        </div>
+    </div>
+</div>
+
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.png" alt="【计算机网络】传输层" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2019 Honey Lemonade&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="GitHub" href="https://github.com/Honeylemonade">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+<script>
+var IcarusThemeSettings = {
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+    
+    
+<script src="/js/animation.js"></script>
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+    
+    
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/" target="_blank" rel="noopener">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+    
+    
+<a id="back-to-top" title="回到顶端">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>

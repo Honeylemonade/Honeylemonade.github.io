@@ -7,17 +7,17 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>【计算机网络】网络层 - Honey Lemonade&#39;s blog</title>
+<title>【计算机网络】应用层 - Honey Lemonade&#39;s blog</title>
 
 
     <meta name="keywords" content="计算机网络">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【计算机网络】网络层">
-<meta property="og:url" content="https:&#x2F;&#x2F;honeylemonade.github.io&#x2F;2019&#x2F;11&#x2F;20&#x2F;IT&#x2F;%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C&#x2F;%E3%80%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E3%80%91%E7%BD%91%E7%BB%9C%E5%B1%82&#x2F;index.html">
+<meta property="og:title" content="【计算机网络】应用层">
+<meta property="og:url" content="https:&#x2F;&#x2F;honeylemonade.github.io&#x2F;2019&#x2F;11&#x2F;26&#x2F;IT&#x2F;%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C&#x2F;%E3%80%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E3%80%91%E5%BA%94%E7%94%A8%E5%B1%82&#x2F;index.html">
 <meta property="og:site_name" content="Honey Lemonade&#39;s blog">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https:&#x2F;&#x2F;honeylemonade.oss-cn-beijing.aliyuncs.com&#x2F;blog&#x2F;IT&#x2F;%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C&#x2F;network%E5%B0%81%E9%9D%A2.png">
-<meta property="og:updated_time" content="2019-11-26T09:39:22.057Z">
+<meta property="og:updated_time" content="2019-11-26T11:37:37.721Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;honeylemonade.oss-cn-beijing.aliyuncs.com&#x2F;blog&#x2F;IT&#x2F;%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C&#x2F;network%E5%B0%81%E9%9D%A2.png">
 
@@ -77,7 +77,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.png" alt="【计算机网络】网络层" height="28">
+                <img src="/images/logo.png" alt="【计算机网络】应用层" height="28">
             
             </a>
         </div>
@@ -135,23 +135,23 @@
     
     <div class="card-image">
         <span  class="image is-7by1">
-        <img class="thumbnail" src="https://honeylemonade.oss-cn-beijing.aliyuncs.com/blog/IT/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/network%E5%B0%81%E9%9D%A2.png" alt="【计算机网络】网络层">
+        <img class="thumbnail" src="https://honeylemonade.oss-cn-beijing.aliyuncs.com/blog/IT/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/network%E5%B0%81%E9%9D%A2.png" alt="【计算机网络】应用层">
         </span>
     </div>
     
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-            【计算机网络】网络层
+            【计算机网络】应用层
             
         </h1>
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-11-20T10:57:03.130Z"><i
-                        class="far fa-calendar-alt">&nbsp;</i>2019-11-20</time>
+                <time class="level-item has-text-grey" datetime="2019-11-26T11:23:58.468Z"><i
+                        class="far fa-calendar-alt">&nbsp;</i>2019-11-26</time>
                 
-                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-11-26T09:39:22.057Z"><i
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-11-26T11:37:37.721Z"><i
                         class="far fa-calendar-check">&nbsp;</i>2019-11-26</time>
                 
                 
@@ -164,7 +164,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    11 分钟 读完 (大约 1586 个字)
+                    6 分钟 读完 (大约 871 个字)
                 </span>
                 
                 
@@ -176,69 +176,51 @@
             <!-- abstract-->
 <a id="more"></a>
 
-<h1 id="网络层简介"><a href="#网络层简介" class="headerlink" title="网络层简介"></a>网络层简介</h1><h2 id="虚拟互联网"><a href="#虚拟互联网" class="headerlink" title="虚拟互联网"></a>虚拟互联网</h2><p><img src="https://honeylemonade.oss-cn-beijing.aliyuncs.com/blog/IT/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/Snipaste_2019-11-20_19-10-50.jpg" alt></p>
-<p>在介绍网络层之前，我们需要了解一下，什么是虚拟互联网？</p>
-<p>虚拟互联网，简单的来说，就是“网络的网络”，他利用路由器将不同的网络连接起来，形成了一个大的网络。</p>
-<h2 id="网络层的任务"><a href="#网络层的任务" class="headerlink" title="网络层的任务"></a>网络层的任务</h2><p>介绍完什么是虚拟互联网，就能理解网络层的任务：<strong>保证了相同或不同网络中的计算机之间的连接与通信。</strong></p>
-<h1 id="IP协议"><a href="#IP协议" class="headerlink" title="IP协议"></a>IP协议</h1><h2 id="IP的简介"><a href="#IP的简介" class="headerlink" title="IP的简介"></a>IP的简介</h2><p>IP存在的目的，是为了分辨不用网络中的不同主机，我们可以使用不同的IP来标明不同的主机。</p>
-<p><strong>IP地址</strong>：32位（四个字节）二进制组成（IPV4）</p>
-<h2 id="IP分类和特殊IP"><a href="#IP分类和特殊IP" class="headerlink" title="IP分类和特殊IP"></a>IP分类和特殊IP</h2><p><img src="https://honeylemonade.oss-cn-beijing.aliyuncs.com/blog/IT/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/Snipaste_2019-11-20_19-23-04.jpg" alt></p>
+<h1 id="DNS域名系统"><a href="#DNS域名系统" class="headerlink" title="DNS域名系统"></a>DNS域名系统</h1><p>互联网采用<strong>层次结构的命名树作为主机的名字，并使用分布式的域名系统 DNS。</strong></p>
+<p><strong>域名服务器程序在专设的结点上运行，运行该程序的机器称为域名服务器。</strong></p>
+<p>域名只是个<strong>逻辑概念，</strong>并不代表计算机所在的物理地点。</p>
+<p><strong>DNS 服务器的管辖范围不是以“域”为单位，而是以“区”为单位。一个服务器所负责管辖的（或有权限的）范围叫做区 (zone)</strong></p>
+<h2 id="常见的域名含义"><a href="#常见的域名含义" class="headerlink" title="常见的域名含义"></a>常见的域名含义</h2><p>(1) 国家顶级域名</p>
 <ul>
-<li>A类地址，前八位，1~126</li>
-<li>B类地址，前八位，128~191</li>
-<li>C类地址，前八位，192~223</li>
+<li>.cn 表示中国，</li>
+<li>.us 表示美国，</li>
+<li>.uk 表示英国，等等。</li>
 </ul>
-<p><strong>特殊IP</strong>：</p>
+<p>(2) 通用顶级域名</p>
+<p>最早的顶级域名是： </p>
 <ul>
-<li>网络地址：网络号+全0，表示这个网络</li>
-<li>广播地址：网络号+全1，表示这个网络的广播地址</li>
-<li>环回地址：习惯上采用127.0.0.1作为环回地址，命名为localhost。</li>
-<li>路由地址： 192.168<em>.</em>1.1属于保留IP，专门用于路由器设置</li>
+<li>.com（公司和企业）</li>
+<li>.net（网络服务机构 ）</li>
+<li>.org（非赢利性组织） </li>
+<li>.edu（美国专用的教育机构）</li>
+<li>.gov（美国专用的政府部门）</li>
+<li>.mil（美国专用的军事部门）</li>
+<li>.int（国际组织）</li>
 </ul>
-<p><strong>虚拟互联网的总体结构</strong></p>
-<img src="https://honeylemonade.oss-cn-beijing.aliyuncs.com/blog/IT/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/Snipaste_2019-11-20_19-31-12.jpg" style="zoom:50%;">
+<p>新增的通用顶级域名：</p>
+<ul>
+<li>.aero     （航空运输企业）</li>
+<li>.biz    （公司和企业）</li>
+<li>.cat    （加泰隆人的语言和文化团体）</li>
+<li>.coop    （合作团体）</li>
+<li>.info    （各种情况）</li>
+<li>.jobs    （人力资源管理者）</li>
+<li>.mobi    （移动产品与服务的用户和提供者）</li>
+<li>.museum （博物馆）</li>
+<li>.name    （个人）</li>
+<li>.pro    （有证书的专业人员）</li>
+<li>.travel    （旅游业）</li>
+</ul>
+<h2 id="域名解析过程"><a href="#域名解析过程" class="headerlink" title="域名解析过程"></a>域名解析过程</h2><ul>
+<li><strong>主机向本地域名服务器的查询一般都是采用递归查询</strong>。如果主机所询问的本地域名服务器不知道被查询域名的 IP 地址，那么本地域名服务器就以 DNS 客户的身份，向其他根域名服务器继续发出查询请求报文。</li>
+<li><strong>本地域名服务器向根域名服务器的查询通常是采用迭代查询。</strong>当根域名服务器收到本地域名服务器的迭代查询请求报文时，要么给出所要查询的 IP 地址，要么告诉本地域名服务器：“你下一步应当向哪一个域名服务器进行查询”。然后让本地域名服务器进行后续的查询。</li>
+</ul>
+<p><img src="https://honeylemonade.oss-cn-beijing.aliyuncs.com/blog/IT/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/20191126192901.png" alt></p>
+<h1 id="万维网WWW"><a href="#万维网WWW" class="headerlink" title="万维网WWW"></a>万维网WWW</h1><p>万维网是一个大规模的、联机式的信息贮藏所，英文简称web。万维网用链接的方法能非常方便地从因特网上的一个站点访问另一个站点（超链技术），具有提供分布式服务的特点。万维网是一个分布式的超媒体系统，是超文本系统的扩充。万维网基于B/S架构工作。 </p>
+<p><strong>URL</strong>：万维网使用统一资源定位符（Uniform Resource Locator）来标志万维网上的各种资源</p>
+<p><strong>HTTP</strong>：HTTP是处于应用层的协议，使用TCP传输层协议进行可靠的传送。因此，需要特别提醒的是，万维网是基于因特网的一种广泛因特网应用系统，且万维网采用的是HTTP（端口：80）/HTTPS（端口：43）的传输协议。</p>
+<p><strong>HTML</strong>：万维网使用超文本标记语言（HyperText Markup Language）</p>
 
-<h2 id="ARP协议"><a href="#ARP协议" class="headerlink" title="ARP协议"></a>ARP协议</h2><p>ARP协议可以将目的主机的IP地址解析为MAC地址。 所谓<strong>地址解析（address resolution）</strong>就是主机在发送帧前将目标IP地址转换成目标MAC地址的过程。 </p>
-<p>另外，当发送主机和目的主机不在同一个局域网中时，可能不知道对方的MAC地址，并且两者也不能直接通信，必须经过路由转发才可以。所以此时，发送主机通过ARP协议获得的将不是目的主机的真实MAC地址，而是一台可以通往局域网外的路由器的MAC地址。 </p>
-<p>每一台主机都有一个<strong>ARP高速缓存</strong>，里面有该局域网中，各个主机的ip地址和MAC地址<strong>映射表</strong>，并且这个表是动态更新的。</p>
-<h2 id="IP数据报"><a href="#IP数据报" class="headerlink" title="IP数据报"></a>IP数据报</h2><p><img src="https://honeylemonade.oss-cn-beijing.aliyuncs.com/blog/IT/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/Snipaste_2019-11-20_19-58-35.jpg" alt="IP数据报"></p>
-<ol>
-<li>版本号：占用4位二进制数，表示该IP数据报使用的IP协议版本。目前Internet中使用的主要是TCP/IP协议族中版本号为4的IP协议。</li>
-<li>首部长度：占用4位二进制位，此域指出整个报头的长度（包括选项），该长度是以32位二进制数为一个计数单位的，接收端通过此域可以计算出报头在何处结束及从何处开始读数据。普通IP数据报（没有任何选项）该字段的值是5（即20个字节的长度）。</li>
-<li>总长度：占用16位二进制位，总长度字段是指整个IP数据报的长度（报头区+数据区），以字节为单位。利用头部长度字段和总长度字段就可以计算出IP数据报中数据内容的起始位置和长度。</li>
-<li>标识：当传输数据过大时，就会进行数据的分片，会形成很多个IP数据报，如果IP数据报拥有相同的标识，那么说明这些IP数据报是同一个数据分片而来的。</li>
-<li>标志：共站3位，第一位保留，目前只有后两位有意义<ol>
-<li>第二位MF：0表示这个是最后一片，1表示还有分片</li>
-<li>第三位DF：0表示允许分片</li>
-</ol>
-</li>
-<li>片偏移：用于表示当前片数据在原数据中的相对偏移位置</li>
-</ol>
-<h2 id="IP层的数据报转发流程"><a href="#IP层的数据报转发流程" class="headerlink" title="IP层的数据报转发流程"></a>IP层的数据报转发流程</h2><p>待完善</p>
-<h1 id="子网和超网"><a href="#子网和超网" class="headerlink" title="子网和超网"></a>子网和超网</h1><h2 id="什么是子网？"><a href="#什么是子网？" class="headerlink" title="什么是子网？"></a>什么是子网？</h2><p>我们平常用的IP可以分为A类，B类，C类等，这三类主机号位数是一定的，比如：</p>
-<ul>
-<li>A类IP的网络号是8位，主机号是24位</li>
-<li>B类IP的网络号是16位，主机号是16位</li>
-<li>C类IP的网络号是24位，主机号是8位</li>
-</ul>
-<p>网络号的位数决定了网络的个数；而主机号的位数，决定了网络中主机的个数；</p>
-<p>但是这些ABC类IP的位数也只是人为规定的，如果我们把这些较大的网络段，分为较小的网络段，那么这些就是子网，例如：我们可以把0010x分为00100和00101。</p>
-<h2 id="为什么要分为子网"><a href="#为什么要分为子网" class="headerlink" title="为什么要分为子网"></a>为什么要分为子网</h2><ul>
-<li>A类拥有超过65535台主机</li>
-<li>B类拥有介于255~65535台主机</li>
-<li>C类拥有小于255台主机</li>
-</ul>
-<p>这种分类却又几个很明显的缺陷：</p>
-<ul>
-<li><p>IP地址空间的利用率有时候很低，地址浪费大：只有两、三台主机的网络，也至少要一个C类IP地址，A、B类浪费更严重，少有达上万台主机的大型IP网络。</p>
-</li>
-<li><p>不够灵活：企业有很多部门，每个部门可能需要各自独立的网络，这怎么办呢？再申请网络？可是人数又不多，怎么办呢？划分子网刚好可以解决这个问题，而且便于管理。</p>
-</li>
-</ul>
-<h2 id="如何划分子网"><a href="#如何划分子网" class="headerlink" title="如何划分子网"></a>如何划分子网</h2><p>划分子网时，需要利用<strong>子网掩码</strong></p>
-<p><strong>子网掩码</strong>是一个应用于TCP/IP网络的32位二进制值，1代表网络号，0代表主机号。它可以屏蔽掉ip地址中的一部分，从而分离出ip地址中的网络部分与主机部分，基于子网掩码，管理员可以将网络进一步划分为若干子网。</p>
-<p>例如常见的255.255.0.0转换为二进制就是1111 1111.1111 1111.0000 0000.0000 0000，这就是B类网的默认子网掩码。</p>
-<h1 id="路由选择协议"><a href="#路由选择协议" class="headerlink" title="路由选择协议"></a>路由选择协议</h1><h2 id="RIP协议"><a href="#RIP协议" class="headerlink" title="RIP协议"></a>RIP协议</h2>
         </div>
         
         <hr style="height:1px;margin:1rem 0" />
@@ -263,19 +245,11 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev"
-                href="/2019/11/21/IT/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E8%BF%9B%E7%A8%8B%EF%BC%8C%E7%BA%BF%E7%A8%8B%E4%B8%8E%E5%A4%9A%E6%A0%B8%E5%A4%84%E7%90%86/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">【操作系统】进程，线程与多核处理</span>
-            </a>
-        </div>
-        
         
         <div class="level-end">
             <a class="level level-item has-link-grey  article-nav-next"
-                href="/2019/11/20/IT/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E3%80%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E3%80%91%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82/">
-                <span class="level-item">【计算机网络】数据链路层</span>
+                href="/2019/11/26/IT/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E3%80%90%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E3%80%91%E4%BC%A0%E8%BE%93%E5%B1%82/">
+                <span class="level-item">【计算机网络】传输层</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -302,66 +276,22 @@
                 目录
             </h3>
             <ul class="menu-list"><li>
-        <a class="is-flex" href="#网络层简介">
+        <a class="is-flex" href="#DNS域名系统">
         <span class="has-mr-6">1</span>
-        <span>网络层简介</span>
+        <span>DNS域名系统</span>
         </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#虚拟互联网">
+        <a class="is-flex" href="#常见的域名含义">
         <span class="has-mr-6">1.1</span>
-        <span>虚拟互联网</span>
+        <span>常见的域名含义</span>
         </a></li><li>
-        <a class="is-flex" href="#网络层的任务">
+        <a class="is-flex" href="#域名解析过程">
         <span class="has-mr-6">1.2</span>
-        <span>网络层的任务</span>
+        <span>域名解析过程</span>
         </a></li></ul></li><li>
-        <a class="is-flex" href="#IP协议">
+        <a class="is-flex" href="#万维网WWW">
         <span class="has-mr-6">2</span>
-        <span>IP协议</span>
-        </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#IP的简介">
-        <span class="has-mr-6">2.1</span>
-        <span>IP的简介</span>
-        </a></li><li>
-        <a class="is-flex" href="#IP分类和特殊IP">
-        <span class="has-mr-6">2.2</span>
-        <span>IP分类和特殊IP</span>
-        </a></li><li>
-        <a class="is-flex" href="#ARP协议">
-        <span class="has-mr-6">2.3</span>
-        <span>ARP协议</span>
-        </a></li><li>
-        <a class="is-flex" href="#IP数据报">
-        <span class="has-mr-6">2.4</span>
-        <span>IP数据报</span>
-        </a></li><li>
-        <a class="is-flex" href="#IP层的数据报转发流程">
-        <span class="has-mr-6">2.5</span>
-        <span>IP层的数据报转发流程</span>
-        </a></li></ul></li><li>
-        <a class="is-flex" href="#子网和超网">
-        <span class="has-mr-6">3</span>
-        <span>子网和超网</span>
-        </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#什么是子网？">
-        <span class="has-mr-6">3.1</span>
-        <span>什么是子网？</span>
-        </a></li><li>
-        <a class="is-flex" href="#为什么要分为子网">
-        <span class="has-mr-6">3.2</span>
-        <span>为什么要分为子网</span>
-        </a></li><li>
-        <a class="is-flex" href="#如何划分子网">
-        <span class="has-mr-6">3.3</span>
-        <span>如何划分子网</span>
-        </a></li></ul></li><li>
-        <a class="is-flex" href="#路由选择协议">
-        <span class="has-mr-6">4</span>
-        <span>路由选择协议</span>
-        </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#RIP协议">
-        <span class="has-mr-6">4.1</span>
-        <span>RIP协议</span>
-        </a></li></ul></li></ul>
+        <span>万维网WWW</span>
+        </a></li></ul>
         </div>
     </div>
 </div>
@@ -384,7 +314,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.png" alt="【计算机网络】网络层" height="28">
+                    <img src="/images/logo.png" alt="【计算机网络】应用层" height="28">
                 
                 </a>
                 <p class="is-size-7">
