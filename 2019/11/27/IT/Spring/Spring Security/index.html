@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html  lang="zh">
+<head>
+    <meta charset="utf-8" />
+
+<meta name="generator" content="Hexo 4.0.0" />
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+<title>Spring Security - Honey Lemonade&#39;s blog</title>
+
+
+    <meta name="keywords" content="Security,接口安全,认证和授权">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spring Security">
+<meta property="og:url" content="https:&#x2F;&#x2F;honeylemonade.github.io&#x2F;2019&#x2F;11&#x2F;27&#x2F;IT&#x2F;Spring&#x2F;Spring%20Security&#x2F;index.html">
+<meta property="og:site_name" content="Honey Lemonade&#39;s blog">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https:&#x2F;&#x2F;honeylemonade.oss-cn-beijing.aliyuncs.com&#x2F;blog&#x2F;IT&#x2F;Spring&#x2F;封面.png">
+<meta property="og:updated_time" content="2019-11-27T12:11:58.107Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;honeylemonade.oss-cn-beijing.aliyuncs.com&#x2F;blog&#x2F;IT&#x2F;Spring&#x2F;封面.png">
+
+
+
+
+
+
+
+<link rel="icon" href="https://honeylemonade.oss-cn-beijing.aliyuncs.com/blog/favicon.png">
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.7.2/css/bulma.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:400,600|Source+Code+Pro">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-dark.css">
+
+
+    
+    
+<style>body>.footer,body>.navbar,body>.section{opacity:0}</style>
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/css/lightgallery.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/css/justifiedGallery.min.css">
+
+    
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.css">
+
+    
+    
+    
+    
+<link rel="stylesheet" href="/css/back-to-top.css">
+
+    
+    
+    
+    
+    
+    
+    
+    <link rel="stylesheet" href="/css/progressbar.css">
+<script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+    
+    
+    
+
+
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body class="is-3-column">
+    <nav class="navbar navbar-main">
+    <div class="container">
+        <div class="navbar-brand is-flex-center">
+            <a class="navbar-item navbar-logo" href="/">
+            
+                <img src="/images/logo.png" alt="Spring Security" height="28">
+            
+            </a>
+        </div>
+        <div class="navbar-menu">
+            
+            <div class="navbar-start">
+                
+                <a class="navbar-item"
+                href="/">Home</a>
+                
+                <a class="navbar-item"
+                href="/archives">Archives</a>
+                
+                <a class="navbar-item"
+                href="/categories">Categories</a>
+                
+                <a class="navbar-item"
+                href="/tags">Tags</a>
+                
+                <a class="navbar-item"
+                href="/about">About</a>
+                
+            </div>
+            
+            <div class="navbar-end">
+                
+                    
+                    <a class="navbar-item" target="_blank" title="Download on GitHub" href="https://github.com/Honeylemonade">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                    
+                
+                
+                
+                <a class="navbar-item search" title="搜索" href="javascript:;" target="_blank" rel="noopener">
+                    <i class="fas fa-search"></i>
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</nav>
+    
+    <section class="section">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-tablet is-8-desktop is-9-widescreen has-order-2 column-main">
+<div class="card">
+    
+    <div class="card-image">
+        <span  class="image is-7by1">
+        <img class="thumbnail" src="https://honeylemonade.oss-cn-beijing.aliyuncs.com/blog/IT/Spring/封面.png" alt="Spring Security">
+        </span>
+    </div>
+    
+    <div class="card-content article ">
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
+            
+            Spring Security
+            
+        </h1>
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2019-11-27T09:51:53.519Z"><i
+                        class="far fa-calendar-alt">&nbsp;</i>2019-11-27</time>
+                
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-11-27T12:11:58.107Z"><i
+                        class="far fa-calendar-check">&nbsp;</i>2019-11-27</time>
+                
+                
+                <i style="color: #7a7a7a;" class="fa fa-folder-open">&nbsp;</i>
+                <div class="level-item">
+                    <a class="has-link-grey -link" href="/categories/IT/">IT</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/IT/Spring/">Spring</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    10 分钟 读完 (大约 1564 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <hr style="height:1px;margin:1rem 0" />
+        <div class="content">
+            <!-- abstract-->
+<a id="more"></a>
+
+<h1 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h1><p>SpringSecurity是Spring下的一个安全框架，与shiro 类似，一般用于用户认证（Authentication）和用户授权（Authorization）两个部分，常与与SpringBoot相整合。 </p>
+<h2 id="认证"><a href="#认证" class="headerlink" title="认证"></a>认证</h2><p>认证的主要目的就是“证明你是谁”，常见的认证方式：</p>
+<ul>
+<li>账号密码登录</li>
+<li>生物认证，例如指纹，人脸，瞳孔</li>
+<li>动态口令，例如例如手机验证码</li>
+</ul>
+<h2 id="授权"><a href="#授权" class="headerlink" title="授权"></a>授权</h2><p>再认证之后，系统会赋予你一定的权利，这就是授权，即“你可以做什么”</p>
+<h3 id="授权模型"><a href="#授权模型" class="headerlink" title="授权模型"></a>授权模型</h3><img src="https://honeylemonade.oss-cn-beijing.aliyuncs.com/blog/IT/Spring/20191127182357.png" style="zoom:67%;">
+
+<p>为了对权限的管理，我们通常把”<strong>权限相关的内容</strong>“存放在数据库中，一个用户可以拥有多个角色，而每个角色可以包含多个权限。</p>
+<h3 id="授权的方法（RBAC）"><a href="#授权的方法（RBAC）" class="headerlink" title="授权的方法（RBAC）"></a>授权的方法（RBAC）</h3><ul>
+<li>基于角色的授权方法：当用户拥有某个角色时，且这个角色拥有某项操作权限，那么这个用户就拥有这个操作权限</li>
+<li>基于资源的授权方式：当用户拥有某个角色时拥有某项操作权限，那么这个用户就可以对这个资源进行相关操作</li>
+</ul>
+<p>通常建议在<u>程序层面</u>采用<strong>基于资源的授权</strong>，而<u>数据库层面</u>采用 <strong>基于角色的授权</strong>，原因如下：</p>
+<p>首先我们的授权系统需要保证是优秀的，那么什么是优秀的系统：</p>
+<ul>
+<li>便于对用户权限更改</li>
+<li>用户与权限之间，耦合度小</li>
+<li>代码精简</li>
+</ul>
+<p><strong>首先，先考虑程序层面</strong>，如果我们在程序层面用的是基于角色的授权方式，一旦我们需要对某个角色的权限做出修改，我们就不得不修改代码。如：</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">if</span>(达芬奇.hasRole(<span class="hljs-string">"画家"</span>))&#123;</span><br><span class="line">	<span class="hljs-comment">//他可以占用画室画画</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>当<u>画室不再对外开放</u>，而达芬奇的画家身份又是不变的，我们就不得不修改代码，但如果我们在程序层面使用对资源的授权方式，就不需要修改代码。</p>
+<figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-keyword">if</span>(达芬奇.hasAuth(<span class="hljs-string">"使用画室"</span>))&#123;</span><br><span class="line">	<span class="hljs-comment">//他可以占用画室画画</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>当我们不希望达芬奇使用画室，我们就可以在数据库中，删除达芬奇”使用画室“的权限。也就是说，基于资源的授权方式更灵活。</p>
+<p><strong>接下来，考虑数据库层面</strong>，如果在数据库中，我们使用的是基于角色的授权方式，即只有三张表，用户表，权限表，用户权限关系表。此时我们对用户的授权就拥有了很大的麻烦，比如：</p>
+<p>当一个用户注册，加入到了这个系统中，你需要赋予他一些初始的权限，由于系统可能很复杂，即使是初始权限，也会很多。在数据库中，我们需要多次调用insert操作，为一个用户授权，这样对于代码来讲，是很庞大的工作量，而且多次I/O操作也会导致性能很低。</p>
+<p>但如果我们使用基于角色的方式，问题就会得到解决，在用户注册后，我们只需要给他赋予一个特定的角色，在数据库中，这个角色拥有着一些初始权限。这样很方便我们进行管理。也就是说，基于角色的权限管理更易管理。</p>
+<p><strong>总结</strong></p>
+<p>基于资源的授权方式更灵活。基于角色的权限管理更易管理。所以我们可以各取所长，放到合适的地方，在<u>程序层面</u>采用<strong>基于资源的授权</strong>，而<u>数据库层面</u>采用 <strong>基于角色的授权</strong></p>
+<h1 id="Spring-security原理"><a href="#Spring-security原理" class="headerlink" title="Spring security原理"></a>Spring security原理</h1><p>Spring security对于认证可授权的管理是<strong>基于session</strong>的，通过过滤器链，主要和两个类打交道，一个是认证类，一个是授权类。</p>
+<p><img src="https://honeylemonade.oss-cn-beijing.aliyuncs.com/blog/IT/Spring/20191127191011.png" alt></p>
+<ol>
+<li>首先他他会判断你有没有进行过认证，如果没有则会返回403或跳转到相应页面（这里可以自定义）</li>
+<li>如果已经认证过，他会根据你带来的SesionID去Tomcat中查询此用户的权限，加入到当前会话中</li>
+<li>当你访问特定API接口，他会判断当前会话是否拥有某个权限，如果有则会返回结果，没有返回403</li>
+</ol>
+<h2 id="认证流程"><a href="#认证流程" class="headerlink" title="认证流程"></a>认证流程</h2><p><img src="https://honeylemonade.oss-cn-beijing.aliyuncs.com/blog/IT/Spring/20191127191540.png" alt="认证流程"></p>
+<ol>
+<li>首先用户提交账号密码</li>
+<li>经过一系列转化，最终将账号密码发送给UserDetailsService</li>
+<li>UserDetailsService会根据发送来的用户名，从数据库（或本地内存）中获取相应的用户信息封装为UserDetails包含三部分<ul>
+<li>用户名</li>
+<li>加密后的密码</li>
+<li>权限</li>
+</ul>
+</li>
+<li>AuthenticationProvider会将用户发送来的信息，与UserDetails的信息相比对，如果成功，则生成SessionID，并将相应SessionID对应的权限保存到内存中</li>
+</ol>
+<ul>
+<li>在认证时，可以设置密码加密器（在数据库中，密码不会以明文形式存储）</li>
+<li>如果是在前后端分离的情况下，可以设置取消使用session</li>
+</ul>
+<h2 id="授权流程"><a href="#授权流程" class="headerlink" title="授权流程"></a>授权流程</h2><p><img src="https://honeylemonade.oss-cn-beijing.aliyuncs.com/blog/IT/Spring/20191127193724.png" alt></p>
+<ul>
+<li>系统会根据发送过来的sessionid，来获取此用户的权限</li>
+<li>然后查询访问此接口，需要什么权限</li>
+<li>接下来，会判断用户权限，是否包含访问此接口需要的权限，如果是则返回结果，否则返回403</li>
+</ul>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>Spring security为认证和授权进行了大部分的工作，但存在一个问题，这些都是基于Session的，也就是说不适合于前后端分离项目。当然也有解决方案，使用Spring security与JWT整合。</p>
+
+        </div>
+        
+        <hr style="height:1px;margin:1rem 0" />
+        <div class="level is-size-7 is-uppercase">
+            <div class="level-start">
+                <div class="level-item">
+                    <i class="fas fa-tags has-text-grey"></i>&nbsp;
+                    <a class="has-link-grey -link" href="/tags/Security/" rel="tag">Security</a>,&nbsp;<a class="has-link-grey -link" href="/tags/%E6%8E%A5%E5%8F%A3%E5%AE%89%E5%85%A8/" rel="tag">接口安全</a>,&nbsp;<a class="has-link-grey -link" href="/tags/%E8%AE%A4%E8%AF%81%E5%92%8C%E6%8E%88%E6%9D%83/" rel="tag">认证和授权</a>
+                </div>
+            </div>
+        </div>
+        
+        
+        
+    </div>
+</div>
+
+
+
+
+
+<div class="card card-transparent">
+    <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next"
+                href="/2019/11/26/IT/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91IO%E7%AE%A1%E7%90%86/">
+                <span class="level-item">【操作系统】IO管理</span>
+                <i class="level-item fas fa-chevron-right"></i>
+            </a>
+        </div>
+        
+    </div>
+</div>
+
+
+</div>
+                
+
+
+
+
+<div class="column is-4-tablet is-4-desktop is-3-widescreen  has-order-1 column-left ">
+    
+        
+    
+    
+        <div class="column-right-shadow is-hidden-widescreen ">
+        
+        </div>
+    
+</div>
+
+                
+            </div>
+        </div>
+    </section>
+    <footer class="footer">
+    <div class="container">
+        <div class="level">
+            <div class="level-start has-text-centered-mobile">
+                <a class="footer-logo is-block has-mb-6" href="/">
+                
+                    <img src="/images/logo.png" alt="Spring Security" height="28">
+                
+                </a>
+                <p class="is-size-7">
+                &copy; 2019 Honey Lemonade&nbsp;
+                Powered by <a href="https://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank">Icarus</a>
+                
+                </p>
+            </div>
+            <div class="level-end">
+            
+                <div class="field has-addons is-flex-center-mobile has-mt-5-mobile is-flex-wrap is-flex-middle">
+                
+                <p class="control">
+                    <a class="button is-white is-large" target="_blank" title="GitHub" href="https://github.com/Honeylemonade">
+                        
+                        <i class="fab fa-github"></i>
+                        
+                    </a>
+                </p>
+                
+                </div>
+            
+            </div>
+        </div>
+    </div>
+</footer>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script>
+<script>moment.locale("zh-CN");</script>
+
+<script>
+var IcarusThemeSettings = {
+    article: {
+        highlight: {
+            clipboard: true,
+            fold: 'unfolded'
+        }
+    }
+};
+</script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script>
+
+
+
+    
+    
+<script src="/js/animation.js"></script>
+
+    
+    
+<script src="https://cdn.jsdelivr.net/npm/lightgallery@1.6.8/dist/js/lightgallery.min.js" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js" defer></script>
+<script src="/js/gallery.js" defer></script>
+
+    
+    
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/" target="_blank" rel="noopener">Update
+            my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/outdatedbrowser@1.1.5/outdatedbrowser/outdatedbrowser.min.js" defer></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        });
+    });
+</script>
+
+    
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@2.7.5/unpacked/MathJax.js?config=TeX-MML-AM_CHTML" defer></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    MathJax.Hub.Config({
+        'HTML-CSS': {
+            matchFontHeight: false
+        },
+        SVG: {
+            matchFontHeight: false
+        },
+        CommonHTML: {
+            matchFontHeight: false
+        },
+        tex2jax: {
+            inlineMath: [
+                ['$','$'],
+                ['\\(','\\)']
+            ]
+        }
+    });
+});
+</script>
+    
+    
+<a id="back-to-top" title="回到顶端">
+    <i class="fas fa-chevron-up"></i>
+</a>
+<script src="/js/back-to-top.js" defer></script>
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+<script src="/js/main.js" defer></script>
+
+    
+    <div class="searchbox ins-search">
+    <div class="searchbox-container ins-search-container">
+        <div class="searchbox-input-wrapper">
+            <input type="text" class="searchbox-input ins-search-input" placeholder="想要查找什么..." />
+            <span class="searchbox-close ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="searchbox-result-wrapper ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+    (function (window) {
+        var INSIGHT_CONFIG = {
+            TRANSLATION: {
+                POSTS: '文章',
+                PAGES: '页面',
+                CATEGORIES: '分类',
+                TAGS: '标签',
+                UNTITLED: '(无标题)',
+            },
+            CONTENT_URL: '/content.json',
+        };
+        window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+    })(window);
+</script>
+<script src="/js/insight.js" defer></script>
+<link rel="stylesheet" href="/css/search.css">
+<link rel="stylesheet" href="/css/insight.css">
+    
+</body>
+</html>
