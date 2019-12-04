@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="Honey Lemonade&#39;s blog">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https:&#x2F;&#x2F;honeylemonade.oss-cn-beijing.aliyuncs.com&#x2F;blog&#x2F;IT&#x2F;%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F&#x2F;operating%20system.jpg">
-<meta property="og:updated_time" content="2019-11-25T00:20:52.148Z">
+<meta property="og:updated_time" content="2019-12-04T07:02:37.645Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;honeylemonade.oss-cn-beijing.aliyuncs.com&#x2F;blog&#x2F;IT&#x2F;%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F&#x2F;operating%20system.jpg">
 
@@ -151,8 +151,8 @@
                 <time class="level-item has-text-grey" datetime="2019-11-22T07:57:41.059Z"><i
                         class="far fa-calendar-alt">&nbsp;</i>2019-11-22</time>
                 
-                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-11-25T00:20:52.148Z"><i
-                        class="far fa-calendar-check">&nbsp;</i>2019-11-25</time>
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-12-04T07:02:37.645Z"><i
+                        class="far fa-calendar-check">&nbsp;</i>2019-12-04</time>
                 
                 
                 <i style="color: #7a7a7a;" class="fa fa-folder-open">&nbsp;</i>
@@ -164,7 +164,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    17 分钟 读完 (大约 2517 个字)
+                    18 分钟 读完 (大约 2641 个字)
                 </span>
                 
                 
@@ -313,7 +313,11 @@
 <p><strong>缺点</strong>：无法实现虚拟存储技术</p>
 <h3 id="虚拟页式存储管理"><a href="#虚拟页式存储管理" class="headerlink" title="虚拟页式存储管理"></a>虚拟页式存储管理</h3><p>采用了虚拟存储技术，在用户作业开始执行以前，只将运行时所需数据存入主存中，而后利用逻辑地址完成相应操作。</p>
 <p>当出现所需数据不在内存中时，这种情况叫做“<strong>缺页中断</strong>”，这时我们需要采用合适的<strong>页面置换算法</strong>，将磁盘中的所需数据替换掉内存中不需要的数据。</p>
-<h4 id="优化算法"><a href="#优化算法" class="headerlink" title="优化算法"></a>优化算法</h4><h4 id="先进先出算法"><a href="#先进先出算法" class="headerlink" title="先进先出算法"></a>先进先出算法</h4><h4 id="最近最少用置换算法"><a href="#最近最少用置换算法" class="headerlink" title="最近最少用置换算法"></a>最近最少用置换算法</h4><h4 id="时钟算法"><a href="#时钟算法" class="headerlink" title="时钟算法"></a>时钟算法</h4><h2 id="段式存储管理"><a href="#段式存储管理" class="headerlink" title="段式存储管理"></a>段式存储管理</h2><p>在页式存储管理中，要求用户程序的<strong>逻辑地址空间是连续的</strong>。就这要求用户源程序进行编译时，将各种数据按照线性装配，不方便，不灵活。</p>
+<h4 id="优化算法（OPT）"><a href="#优化算法（OPT）" class="headerlink" title="优化算法（OPT）"></a>优化算法（OPT）</h4><p>这种方法是最优解，产生的缺页中断最少，但这种算法是需要根据结果来求得置换过程的，因此是一种理论上的算法。</p>
+<h4 id="先进先出算法（FIFO）"><a href="#先进先出算法（FIFO）" class="headerlink" title="先进先出算法（FIFO）"></a>先进先出算法（FIFO）</h4><p>按照顺序进入内存，当发生缺页中断时，取出队列最底部的元素</p>
+<h4 id="最近最少用置换算法（LRU）"><a href="#最近最少用置换算法（LRU）" class="headerlink" title="最近最少用置换算法（LRU）"></a>最近最少用置换算法（LRU）</h4><p>淘汰的是最近未被访问的页</p>
+<h4 id="时钟算法"><a href="#时钟算法" class="headerlink" title="时钟算法"></a>时钟算法</h4><p>各个页形成环形链表，淘汰最老和最近没有用的页面</p>
+<h2 id="段式存储管理"><a href="#段式存储管理" class="headerlink" title="段式存储管理"></a>段式存储管理</h2><p>在页式存储管理中，要求用户程序的<strong>逻辑地址空间是连续的</strong>。就这要求用户源程序进行编译时，将各种数据按照线性装配，不方便，不灵活。</p>
 <p>而段式存储管理把用户作业按照功能分段，分别装入内存的不同位置</p>
 <h2 id="段页式存储管理"><a href="#段页式存储管理" class="headerlink" title="段页式存储管理"></a>段页式存储管理</h2><p>段页式即将段式和页式相结合，克服了上述两种方式的缺点。</p>
 

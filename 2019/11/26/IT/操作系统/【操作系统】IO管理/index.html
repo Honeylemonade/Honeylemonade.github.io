@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="Honey Lemonade&#39;s blog">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https:&#x2F;&#x2F;honeylemonade.oss-cn-beijing.aliyuncs.com&#x2F;blog&#x2F;IT&#x2F;%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F&#x2F;operating%20system.jpg">
-<meta property="og:updated_time" content="2019-11-26T12:03:41.632Z">
+<meta property="og:updated_time" content="2019-12-04T06:55:42.381Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;honeylemonade.oss-cn-beijing.aliyuncs.com&#x2F;blog&#x2F;IT&#x2F;%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F&#x2F;operating%20system.jpg">
 
@@ -151,8 +151,8 @@
                 <time class="level-item has-text-grey" datetime="2019-11-26T11:41:12.713Z"><i
                         class="far fa-calendar-alt">&nbsp;</i>2019-11-26</time>
                 
-                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-11-26T12:03:41.632Z"><i
-                        class="far fa-calendar-check">&nbsp;</i>2019-11-26</time>
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-12-04T06:55:42.381Z"><i
+                        class="far fa-calendar-check">&nbsp;</i>2019-12-04</time>
                 
                 
                 <i style="color: #7a7a7a;" class="fa fa-folder-open">&nbsp;</i>
@@ -164,7 +164,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    10 分钟 读完 (大约 1427 个字)
+                    14 分钟 读完 (大约 2044 个字)
                 </span>
                 
                 
@@ -176,17 +176,23 @@
             <!-- abstract-->
 <a id="more"></a>
 
-<h1 id="IO管理概述"><a href="#IO管理概述" class="headerlink" title="IO管理概述"></a>IO管理概述</h1><h2 id="IO管理目标与功能"><a href="#IO管理目标与功能" class="headerlink" title="IO管理目标与功能"></a>IO管理目标与功能</h2><p>计算机系统中的IO设备按使用特性可以分为一下类型：</p>
+<h1 id="IO管理概述"><a href="#IO管理概述" class="headerlink" title="IO管理概述"></a>IO管理概述</h1><h2 id="IO管理目标与功能"><a href="#IO管理目标与功能" class="headerlink" title="IO管理目标与功能"></a>IO管理目标与功能</h2><p><strong>计算机系统中的IO设备按使用特性可以分为一下类型：</strong></p>
 <ol>
 <li>人机交互类外部设备，又称慢速IO设备，用于桶计算机用户之间交互的设备，如打印机、显示器、鼠标、键盘等。这类设备数据交换速度相对较慢，通常是以字节为单位进行数据交换。</li>
 <li>存储设备，用于存储程序和数据的设备，如磁盘、磁带、光盘等。这类设备用于数据交换，速度较快，通常以多字节组成的块为单位进行数据交换。</li>
 <li>网络通信设备，用于与远程设备通信的设备，如各种网络接口、调制解调器等。其数据交换速度介于外部设备与存储设备之间。网络通信设备在使用和管理上与前两者设备有很大的不同。</li>
 </ol>
-<p>按速度来分</p>
+<p><strong>按速度来分</strong></p>
 <ol>
 <li>低速设备，传输速率仅为每秒钟几个字节至数百个字节的一类设备，如键盘、鼠标等。</li>
 <li>中速设备，传输速率在每秒数千个字节至数万个字节的一类设备，如行式打印机、激光打印机等。</li>
 <li>高速设备，传输速率在数百个千字节至千兆字节的一类设备，如磁带机、磁盘机、光盘机等。</li>
+</ol>
+<p><strong>按共享性划分</strong></p>
+<ol>
+<li>独占设备：通常分配给某个进程，在该进程释放之前，其他进程不能使用。 如打印机和纸带读入机</li>
+<li>共享设备：允许若干个进程同时使用。如硬盘</li>
+<li>虚拟设备：通过假脱机技术把原来的独占设备改造成若干进程所共享的设备，以提高设备的利用率。</li>
 </ol>
 <p><strong>IO设备管理的主要目标有以下三个方面。</strong></p>
 <ul>
@@ -202,12 +208,18 @@
 <li>外部设备中断处理。</li>
 <li>虚拟设备的实现。</li>
 </ul>
-<h1 id="IO控制方式"><a href="#IO控制方式" class="headerlink" title="IO控制方式"></a>IO控制方式</h1><ul>
-<li>程序直接控制方式</li>
-<li>中断控制方式</li>
-<li>DMA控制方式</li>
-<li>通道控制方式</li>
-</ul>
+<h1 id="IO控制方式"><a href="#IO控制方式" class="headerlink" title="IO控制方式"></a>IO控制方式</h1><h2 id="程序直接控制方式"><a href="#程序直接控制方式" class="headerlink" title="程序直接控制方式"></a>程序直接控制方式</h2><p>这个最原始的方式的特点是I/O过程中，CPU全程阻塞。CPU向I/O控制器发送指令，要求读取一个字节，IO控制器取一个字节，存入自身的数据寄存器中，存入完毕后通知CPU。然后CPU把这个字节存入内存。在这个过程中，CPU的大部分时间都在等待操作完成。 </p>
+<h2 id="中断控制方式"><a href="#中断控制方式" class="headerlink" title="中断控制方式"></a>中断控制方式</h2><p>这种控制方式的特点是I/O过程中，CPU跟I/O控制器并行工作，无需阻塞。传输过程跟程序程序直接控制方式没区别。不过由于CPU在I/O过程中无需阻塞，效率比之程序I/O方式提高了百倍。 </p>
+<h2 id="DMA控制方式（Direct-Memory-Access）"><a href="#DMA控制方式（Direct-Memory-Access）" class="headerlink" title="DMA控制方式（Direct Memory Access）"></a>DMA控制方式（Direct Memory Access）</h2><p>这是一种非常有效率的I/O控制方式——数据传输的基本单位是<strong>数据块</strong>；</p>
+<p>DMA控制器将数据直接送入内存；整个数据块传送开始和结束的一刻CPU才会处理，其他时候CPU与控制器并行工作。</p>
+<p>值得注意的是DMA控制方式是由DMA控制器实现的，DMA控制器有3部分</p>
+<ol>
+<li>主机&amp;控制器接口</li>
+<li>控制器&amp;块设备接口</li>
+<li>I/O控制逻辑。</li>
+</ol>
+<p>核心就是主机&amp;控制器接口，这个接口是为了完成主机和块数据的直接交换，DMA是由硬件实现数据块移动的。</p>
+<h2 id="通道控制方式"><a href="#通道控制方式" class="headerlink" title="通道控制方式"></a>通道控制方式</h2><p>这种控制方式是对DMA方式的改进，把<strong>一个数据块的传输改进为一组数据块的传输</strong>。通道指的是这整个传输的虚拟含义。I/O通道控制方式是由通道程序和设备控制器共同实现的。可以说，它比DMA方式改进的地方在于用程序增加了对DMA方式的控制，使多个数据块的传输能够合为一个整体 </p>
 <h1 id="IO缓冲"><a href="#IO缓冲" class="headerlink" title="IO缓冲"></a>IO缓冲</h1><h2 id="缓冲的作用"><a href="#缓冲的作用" class="headerlink" title="缓冲的作用"></a>缓冲的作用</h2><p>首先我们要知道CPU和传统的I/O设备之间的速度差别很大，CPU速度远远高于I/O设备。</p>
 <p>在没有缓存的情况下，当有每一条数据被处理完，就会被传入I/O设备，在数据传输的过程中，CPU会被阻塞，导致CPU利用率低，可用的有效时间被浪费。或许有人会说，这时候CPU可以去做其他事情呀！但是，这样会造成CPU频繁切换进程，反而性能会更差。</p>
 <p>在有了缓存的情况下，CPU一次处理大量数据，接着，缓存中的数据再传输到I/O设备中，此时（也就是传输过程中）CPU可以切换到其他线程进行工作，由于缓存是一次性向I/O设备传输大量数据，所以不会造成CPU频繁切换进程，提升了CPU的有效利用率。</p>
@@ -301,7 +313,23 @@
         <a class="is-flex" href="#IO控制方式">
         <span class="has-mr-6">2</span>
         <span>IO控制方式</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#程序直接控制方式">
+        <span class="has-mr-6">2.1</span>
+        <span>程序直接控制方式</span>
         </a></li><li>
+        <a class="is-flex" href="#中断控制方式">
+        <span class="has-mr-6">2.2</span>
+        <span>中断控制方式</span>
+        </a></li><li>
+        <a class="is-flex" href="#DMA控制方式（Direct-Memory-Access）">
+        <span class="has-mr-6">2.3</span>
+        <span>DMA控制方式（Direct Memory Access）</span>
+        </a></li><li>
+        <a class="is-flex" href="#通道控制方式">
+        <span class="has-mr-6">2.4</span>
+        <span>通道控制方式</span>
+        </a></li></ul></li><li>
         <a class="is-flex" href="#IO缓冲">
         <span class="has-mr-6">3</span>
         <span>IO缓冲</span>
