@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="Honey Lemonade&#39;s blog">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https:&#x2F;&#x2F;honeylemonade.oss-cn-beijing.aliyuncs.com&#x2F;blog&#x2F;IT&#x2F;算法&#x2F;Algorithms.jpg">
-<meta property="og:updated_time" content="2019-11-23T06:08:29.220Z">
+<meta property="og:updated_time" content="2019-12-19T10:45:00.154Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;honeylemonade.oss-cn-beijing.aliyuncs.com&#x2F;blog&#x2F;IT&#x2F;算法&#x2F;Algorithms.jpg">
 
@@ -151,8 +151,8 @@
                 <time class="level-item has-text-grey" datetime="2019-11-23T06:06:59.925Z"><i
                         class="far fa-calendar-alt">&nbsp;</i>2019-11-23</time>
                 
-                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-11-23T06:08:29.220Z"><i
-                        class="far fa-calendar-check">&nbsp;</i>2019-11-23</time>
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-12-19T10:45:00.154Z"><i
+                        class="far fa-calendar-check">&nbsp;</i>2019-12-19</time>
                 
                 
                 <i style="color: #7a7a7a;" class="fa fa-folder-open">&nbsp;</i>
@@ -164,7 +164,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    3 分钟 读完 (大约 380 个字)
+                    3 分钟 读完 (大约 441 个字)
                 </span>
                 
                 
@@ -177,6 +177,12 @@
 <a id="more"></a>
 
 <h1 id="回溯法"><a href="#回溯法" class="headerlink" title="回溯法"></a>回溯法</h1><p> 在包含问题的所有解的解空间树中，按照<strong>深度优先搜索的策略</strong>，从根结点出发深度探索解空间树。当探索到某一结点时，要先判断该结点是否包含问题的解，如果包含，就从该结点出发继续探索下去，如果该结点不包含问题的解，则逐层向其祖先结点回溯。（其实回溯法就是对隐式图的深度优先搜索算法）。 </p>
+<p>利用深度优先在空间树中找出满足条件的所有解</p>
+<h1 id="剪枝函数"><a href="#剪枝函数" class="headerlink" title="剪枝函数"></a>剪枝函数</h1><p>剪枝函数包括两类：</p>
+<ol>
+<li>约束函数：用于去除不满足条件的</li>
+<li>限界函数：用于获取最优解</li>
+</ol>
 <h1 id="解题框架步骤"><a href="#解题框架步骤" class="headerlink" title="解题框架步骤"></a>解题框架步骤</h1><p>也是利用了递归，其实本质上也是一种“在所有情况中遍历出解”的方法</p>
 <figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="hljs-function"><span class="hljs-keyword">void</span> <span class="hljs-title">backtrack</span><span class="hljs-params">(<span class="hljs-keyword">int</span> t)</span>          <span class="hljs-comment">//t表示递归深度，即当前扩展节点在解空间树的深度</span></span></span><br><span class="line"><span class="hljs-function"></span>&#123; </span><br><span class="line">    <span class="hljs-keyword">if</span> ( t &gt; n ) output(x);    <span class="hljs-comment">//n控制递归深度，如果算法已经搜索到叶节点，记录输出可行解X</span></span><br><span class="line">    <span class="hljs-keyword">else</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">int</span> i = f(n,t) ; i &lt;= g(n,t) ; i++)  <span class="hljs-comment">//在深度t，i从未搜索过得起始编号到终止编号</span></span><br><span class="line">        &#123;</span><br><span class="line">            x[t] = h(i);       <span class="hljs-comment">//查看i这个点的值是否满足题目的要求</span></span><br><span class="line">            <span class="hljs-keyword">if</span>( constraint(t) &amp;&amp; bound(t)) </span><br><span class="line">                backtrack(t+<span class="hljs-number">1</span>)</span><br><span class="line">       <span class="hljs-comment">//constraint（t）为true表示在当前扩展节点处x[1:t]的取值满足问题的约束条件；</span></span><br><span class="line">       <span class="hljs-comment">//bound(t)为true表示当前扩展节点取值没有使目标函数越界；</span></span><br><span class="line">       <span class="hljs-comment">//为true表示还需要进一步的搜索子树，否则减去子树。</span></span><br><span class="line">         &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 
@@ -247,8 +253,12 @@
         <span class="has-mr-6">1</span>
         <span>回溯法</span>
         </a></li><li>
-        <a class="is-flex" href="#解题框架步骤">
+        <a class="is-flex" href="#剪枝函数">
         <span class="has-mr-6">2</span>
+        <span>剪枝函数</span>
+        </a></li><li>
+        <a class="is-flex" href="#解题框架步骤">
+        <span class="has-mr-6">3</span>
         <span>解题框架步骤</span>
         </a></li></ul>
         </div>

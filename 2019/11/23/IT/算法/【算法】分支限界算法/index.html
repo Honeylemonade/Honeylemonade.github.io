@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="Honey Lemonade&#39;s blog">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https:&#x2F;&#x2F;honeylemonade.oss-cn-beijing.aliyuncs.com&#x2F;blog&#x2F;IT&#x2F;算法&#x2F;Algorithms.jpg">
-<meta property="og:updated_time" content="2019-11-23T06:19:11.307Z">
+<meta property="og:updated_time" content="2019-12-19T10:45:17.785Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;honeylemonade.oss-cn-beijing.aliyuncs.com&#x2F;blog&#x2F;IT&#x2F;算法&#x2F;Algorithms.jpg">
 
@@ -151,8 +151,8 @@
                 <time class="level-item has-text-grey" datetime="2019-11-23T06:08:35.349Z"><i
                         class="far fa-calendar-alt">&nbsp;</i>2019-11-23</time>
                 
-                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-11-23T06:19:11.307Z"><i
-                        class="far fa-calendar-check">&nbsp;</i>2019-11-23</time>
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-12-19T10:45:17.785Z"><i
+                        class="far fa-calendar-check">&nbsp;</i>2019-12-19</time>
                 
                 
                 <i style="color: #7a7a7a;" class="fa fa-folder-open">&nbsp;</i>
@@ -164,7 +164,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    3 分钟 读完 (大约 385 个字)
+                    3 分钟 读完 (大约 414 个字)
                 </span>
                 
                 
@@ -177,6 +177,7 @@
 <a id="more"></a>
 
 <h1 id="分支限界算法"><a href="#分支限界算法" class="headerlink" title="分支限界算法"></a>分支限界算法</h1><p>类似于回溯法，也是一种在问题的解空间树T上搜索问题解的算法。但在一般情况下，分支限界法与回溯法的求解目标不同。<strong>回溯法的求解目标是找出T中满足约束条件的所有解</strong>，而<strong>分支限界法</strong>的求解目标则是找出<strong>满足约束条件的一个解</strong>，或是在满足约束条件的解中找出使某一目标函数值达到<strong>极大或极小的解</strong>，即在某种意义下的<strong>最优解</strong>。</p>
+<p>利用广度优先找出满足条件的一个解，或者满足约束条件的最优解</p>
 <h2 id="分支搜索算法"><a href="#分支搜索算法" class="headerlink" title="分支搜索算法"></a>分支搜索算法</h2><p>所谓“分支”就是采用广度优先的策略，依次搜索E-结点的所有分支，也就是所有相邻结点，抛弃不满足约束条件的结点，其余结点加入活结点表。然后从表中选择一个结点作为下一个E-结点，继续搜索。</p>
 <p>   选择下一个E-结点的方式不同，则会有几种不同的分支搜索方式。</p>
 <p>  1）FIFO搜索</p>
