@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="Honey Lemonade&#39;s blog">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https:&#x2F;&#x2F;honeylemonade.oss-cn-beijing.aliyuncs.com&#x2F;blog&#x2F;IT&#x2F;%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F&#x2F;operating%20system.jpg">
-<meta property="og:updated_time" content="2019-11-22T07:51:51.879Z">
+<meta property="og:updated_time" content="2019-12-19T10:22:53.079Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;honeylemonade.oss-cn-beijing.aliyuncs.com&#x2F;blog&#x2F;IT&#x2F;%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F&#x2F;operating%20system.jpg">
 
@@ -151,8 +151,8 @@
                 <time class="level-item has-text-grey" datetime="2019-11-22T06:50:06.497Z"><i
                         class="far fa-calendar-alt">&nbsp;</i>2019-11-22</time>
                 
-                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-11-22T07:51:51.879Z"><i
-                        class="far fa-calendar-check">&nbsp;</i>2019-11-22</time>
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-12-19T10:22:53.079Z"><i
+                        class="far fa-calendar-check">&nbsp;</i>2019-12-19</time>
                 
                 
                 <i style="color: #7a7a7a;" class="fa fa-folder-open">&nbsp;</i>
@@ -164,7 +164,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    5 分钟 读完 (大约 821 个字)
+                    6 分钟 读完 (大约 972 个字)
                 </span>
                 
                 
@@ -180,6 +180,14 @@
 
 <p>我们知道现如今的CPU往往是多核多线程的，拿作者的电脑举例子：总共4个核心，每个核心可以处理4个线程。也就是说同时能提供16个线程的并行处理。</p>
 <p>但是如今的系统非常复杂，再加上各种大型软件，线程需要被创建，执行，销毁等，所需线程数远大于16，所以就需要<strong>cpu在不同的程序线程中来回切换，这就称为处理器调度。</strong></p>
+<h1 id="调度准则"><a href="#调度准则" class="headerlink" title="调度准则"></a>调度准则</h1><ul>
+<li>资源利用率</li>
+<li>平衡资源：应保证所有资源都处于繁忙状态，不应该存在有些闲置，而有些很忙</li>
+<li>响应时间：交互式的进程的响应时间应尽可能的短</li>
+<li>周转时间：一个进程从提交到完成所需时间叫做周转时间，周转时间应该尽可能的短</li>
+<li>吞吐率：应尽量保证每个单位时间内完成的进程数最多</li>
+<li>公平性：确保每个用户都可以合理的获取系统资源份额</li>
+</ul>
 <h1 id="处理器调度层次"><a href="#处理器调度层次" class="headerlink" title="处理器调度层次"></a>处理器调度层次</h1><p><img src="https://honeylemonade.oss-cn-beijing.aliyuncs.com/blog/IT/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/20191122153242.png" alt></p>
 <h2 id="长程调度"><a href="#长程调度" class="headerlink" title="长程调度"></a>长程调度</h2><p>长程调度发生在新进程的创建中，他决定了一个进程能否被创建，或者创建后是否被置成就绪态，来参加处理器资源的竞争。</p>
 <h2 id="中程调度"><a href="#中程调度" class="headerlink" title="中程调度"></a>中程调度</h2><p>主要负责内存和外存之间的进程对换，解决内存紧张的问题。</p>
@@ -281,44 +289,48 @@
         <span class="has-mr-6">1.1</span>
         <span>什么是处理器调度</span>
         </a></li></ul></li><li>
-        <a class="is-flex" href="#处理器调度层次">
+        <a class="is-flex" href="#调度准则">
         <span class="has-mr-6">2</span>
+        <span>调度准则</span>
+        </a></li><li>
+        <a class="is-flex" href="#处理器调度层次">
+        <span class="has-mr-6">3</span>
         <span>处理器调度层次</span>
         </a><ul class="menu-list"><li>
         <a class="is-flex" href="#长程调度">
-        <span class="has-mr-6">2.1</span>
+        <span class="has-mr-6">3.1</span>
         <span>长程调度</span>
         </a></li><li>
         <a class="is-flex" href="#中程调度">
-        <span class="has-mr-6">2.2</span>
+        <span class="has-mr-6">3.2</span>
         <span>中程调度</span>
         </a></li><li>
         <a class="is-flex" href="#短程调度（重点）">
-        <span class="has-mr-6">2.3</span>
+        <span class="has-mr-6">3.3</span>
         <span>短程调度（重点）</span>
         </a></li></ul></li><li>
         <a class="is-flex" href="#短程调度算法">
-        <span class="has-mr-6">3</span>
+        <span class="has-mr-6">4</span>
         <span>短程调度算法</span>
         </a><ul class="menu-list"><li>
         <a class="is-flex" href="#先来先服务调度">
-        <span class="has-mr-6">3.1</span>
+        <span class="has-mr-6">4.1</span>
         <span>先来先服务调度</span>
         </a></li><li>
         <a class="is-flex" href="#时间片轮转法">
-        <span class="has-mr-6">3.2</span>
+        <span class="has-mr-6">4.2</span>
         <span>时间片轮转法</span>
         </a></li><li>
         <a class="is-flex" href="#最短进程优先调度">
-        <span class="has-mr-6">3.3</span>
+        <span class="has-mr-6">4.3</span>
         <span>最短进程优先调度</span>
         </a></li><li>
         <a class="is-flex" href="#优先级调度">
-        <span class="has-mr-6">3.4</span>
+        <span class="has-mr-6">4.4</span>
         <span>优先级调度</span>
         </a></li><li>
         <a class="is-flex" href="#多级反馈队列轮换法">
-        <span class="has-mr-6">3.5</span>
+        <span class="has-mr-6">4.5</span>
         <span>多级反馈队列轮换法</span>
         </a></li></ul></li></ul>
         </div>

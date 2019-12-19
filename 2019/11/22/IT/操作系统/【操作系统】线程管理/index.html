@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="Honey Lemonade&#39;s blog">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https:&#x2F;&#x2F;honeylemonade.oss-cn-beijing.aliyuncs.com&#x2F;blog&#x2F;IT&#x2F;%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F&#x2F;operating%20system.jpg">
-<meta property="og:updated_time" content="2019-11-22T06:46:56.826Z">
+<meta property="og:updated_time" content="2019-12-19T10:21:56.390Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;honeylemonade.oss-cn-beijing.aliyuncs.com&#x2F;blog&#x2F;IT&#x2F;%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F&#x2F;operating%20system.jpg">
 
@@ -151,8 +151,8 @@
                 <time class="level-item has-text-grey" datetime="2019-11-22T03:51:00.372Z"><i
                         class="far fa-calendar-alt">&nbsp;</i>2019-11-22</time>
                 
-                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-11-22T06:46:56.826Z"><i
-                        class="far fa-calendar-check">&nbsp;</i>2019-11-22</time>
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-12-19T10:21:56.390Z"><i
+                        class="far fa-calendar-check">&nbsp;</i>2019-12-19</time>
                 
                 
                 <i style="color: #7a7a7a;" class="fa fa-folder-open">&nbsp;</i>
@@ -164,7 +164,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    14 分钟 读完 (大约 2042 个字)
+                    16 分钟 读完 (大约 2400 个字)
                 </span>
                 
                 
@@ -200,6 +200,21 @@
 
 <p>线程A在等待B持有的某种资源（这里是锁），而线程B在等待A持有的某种资源，在没有获得自己想要的资源之前，线程A和线程B都不会主动的释放自己所持有的资源，于是就陷入了“死锁”；</p>
 <p>形象一点来讲，就像是幼儿园的两个小朋友吵架了，两个小朋友心理都在想“哼！╭(╯^╰)╮如果你不道歉，我就不道歉”，于是局面就一直僵持着。</p>
+<p><strong>还有一种更简单的情况，也是死锁</strong></p>
+<img src="https://honeylemonade.oss-cn-beijing.aliyuncs.com/blog/IT/操作系统/20191204175948.png" style="zoom:67%;">
+
+<p>有A和B两个线程，A和B运行都需要4份资源，总共有6份，此时A和B都获取了3份，此时两者都没有满足运行条件，则产生死锁</p>
+<p><strong>形成死锁的条件</strong></p>
+<ul>
+<li>互斥条件：一个资源只能由一个进程使用</li>
+<li>部分分配条件：一个进程占有一定资源后，期间又在申请其他资源</li>
+<li>不可抢占条件：一个资源只能被释放，不能被抢占</li>
+<li>循环等待条件：一个进程占有若干资源，同时等待其他资源，多个进程形成循环等待链</li>
+</ul>
+<h4 id="利用银行家算法避免死锁"><a href="#利用银行家算法避免死锁" class="headerlink" title="利用银行家算法避免死锁"></a>利用银行家算法避免死锁</h4><p>在银行家算法中，资源的分配是批量的，仅仅在申请者获得资源后可以运行，系统才会为其提供资源。</p>
+<p>例如上述的例子，A和B两个线程，系统会一次性分配4份资源给A或B，让其执行。</p>
+<h4 id="等待图法检测死锁"><a href="#等待图法检测死锁" class="headerlink" title="等待图法检测死锁"></a>等待图法检测死锁</h4><p><img src="https://honeylemonade.oss-cn-beijing.aliyuncs.com/blog/IT/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/20191204182543.png" alt></p>
+<p>如上图所示，P1等在P2占有的资源，P2等待P3……，当等待图中形成<strong>回路</strong>时，代表产生了死锁。</p>
 <h3 id="活锁"><a href="#活锁" class="headerlink" title="活锁"></a>活锁</h3><p><strong>活锁概念</strong>：独木桥两个人互相让路。</p>
 <p>在计算机中活锁的情况不太常见。这里就不展开讨论。</p>
 <h3 id="饥饿"><a href="#饥饿" class="headerlink" title="饥饿"></a>饥饿</h3><p>人的饥饿是因为没有食物吃，而线程的饥饿时因为没有CPU时间片使用，产生这种情况的原因可能是：</p>
@@ -216,7 +231,10 @@
 <li>对于活跃性问题，往往是由于某个线程不能得到他需要的某个资源，所以我们要做好“线程间的同步”工作，即<strong>线程同步</strong>；</li>
 <li>对于性能问题，往往是由于“锁的滥用”，所以我们要尽量使用小粒度的锁。</li>
 </ul>
-<h1 id="PV操作和管程"><a href="#PV操作和管程" class="headerlink" title="PV操作和管程"></a>PV操作和管程</h1><h2 id="PV操作"><a href="#PV操作" class="headerlink" title="PV操作"></a>PV操作</h2><p><strong>一，信号量</strong></p>
+<h1 id="PV操作和管程"><a href="#PV操作和管程" class="headerlink" title="PV操作和管程"></a>PV操作和管程</h1><h2 id="PV操作"><a href="#PV操作" class="headerlink" title="PV操作"></a>PV操作</h2><blockquote>
+<p>原语：所谓原语，即不可中断的执行过程</p>
+</blockquote>
+<p><strong>一，信号量</strong></p>
 <p>信号量：表示<strong>一种资源</strong>能否被使用。其数据结构表示如下</p>
 <figure class="highlight java hljs"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">semaphore&#123;</span><br><span class="line">    <span class="hljs-comment">//正数时（包括0）表示可使用的资源个数，负数时，表示等待进程的个数</span></span><br><span class="line">	<span class="hljs-keyword">int</span> value;</span><br><span class="line">    <span class="hljs-comment">//进程的阻塞队列</span></span><br><span class="line">	PCB* pointer;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
