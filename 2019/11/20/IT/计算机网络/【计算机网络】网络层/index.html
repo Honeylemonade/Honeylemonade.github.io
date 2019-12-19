@@ -17,7 +17,7 @@
 <meta property="og:site_name" content="Honey Lemonade&#39;s blog">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https:&#x2F;&#x2F;honeylemonade.oss-cn-beijing.aliyuncs.com&#x2F;blog&#x2F;IT&#x2F;%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C&#x2F;network%E5%B0%81%E9%9D%A2.png">
-<meta property="og:updated_time" content="2019-11-26T09:39:22.057Z">
+<meta property="og:updated_time" content="2019-12-19T10:39:37.625Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https:&#x2F;&#x2F;honeylemonade.oss-cn-beijing.aliyuncs.com&#x2F;blog&#x2F;IT&#x2F;%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C&#x2F;network%E5%B0%81%E9%9D%A2.png">
 
@@ -151,8 +151,8 @@
                 <time class="level-item has-text-grey" datetime="2019-11-20T10:57:03.130Z"><i
                         class="far fa-calendar-alt">&nbsp;</i>2019-11-20</time>
                 
-                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-11-26T09:39:22.057Z"><i
-                        class="far fa-calendar-check">&nbsp;</i>2019-11-26</time>
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-12-19T10:39:37.625Z"><i
+                        class="far fa-calendar-check">&nbsp;</i>2019-12-19</time>
                 
                 
                 <i style="color: #7a7a7a;" class="fa fa-folder-open">&nbsp;</i>
@@ -164,7 +164,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    11 分钟 读完 (大约 1586 个字)
+                    11 分钟 读完 (大约 1680 个字)
                 </span>
                 
                 
@@ -187,6 +187,8 @@
 <li>A类地址，前八位，1~126</li>
 <li>B类地址，前八位，128~191</li>
 <li>C类地址，前八位，192~223</li>
+<li>D类地址，多播</li>
+<li>E类地址，留作今后使用</li>
 </ul>
 <p><strong>特殊IP</strong>：</p>
 <ul>
@@ -235,10 +237,18 @@
 <li><p>不够灵活：企业有很多部门，每个部门可能需要各自独立的网络，这怎么办呢？再申请网络？可是人数又不多，怎么办呢？划分子网刚好可以解决这个问题，而且便于管理。</p>
 </li>
 </ul>
-<h2 id="如何划分子网"><a href="#如何划分子网" class="headerlink" title="如何划分子网"></a>如何划分子网</h2><p>划分子网时，需要利用<strong>子网掩码</strong></p>
+<h2 id="如何划分子网"><a href="#如何划分子网" class="headerlink" title="如何划分子网"></a>如何划分子网</h2><p><img src="https://honeylemonade.oss-cn-beijing.aliyuncs.com/blog/IT/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/20191219183923.png" alt></p>
+<p>划分子网时，需要利用<strong>子网掩码</strong></p>
 <p><strong>子网掩码</strong>是一个应用于TCP/IP网络的32位二进制值，1代表网络号，0代表主机号。它可以屏蔽掉ip地址中的一部分，从而分离出ip地址中的网络部分与主机部分，基于子网掩码，管理员可以将网络进一步划分为若干子网。</p>
 <p>例如常见的255.255.0.0转换为二进制就是1111 1111.1111 1111.0000 0000.0000 0000，这就是B类网的默认子网掩码。</p>
-<h1 id="路由选择协议"><a href="#路由选择协议" class="headerlink" title="路由选择协议"></a>路由选择协议</h1><h2 id="RIP协议"><a href="#RIP协议" class="headerlink" title="RIP协议"></a>RIP协议</h2>
+<h2 id="无分类编址CIDR"><a href="#无分类编址CIDR" class="headerlink" title="无分类编址CIDR"></a>无分类编址CIDR</h2><p><img src="https://honeylemonade.oss-cn-beijing.aliyuncs.com/blog/IT/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/20191219183907.png" alt></p>
+<h1 id="路由选择协议RIP协议"><a href="#路由选择协议RIP协议" class="headerlink" title="路由选择协议RIP协议"></a>路由选择协议RIP协议</h1><p><img src="https://honeylemonade.oss-cn-beijing.aliyuncs.com/blog/IT/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/20191219183756.png" alt></p>
+<ul>
+<li>距离等于16表示不可达</li>
+<li>下一跳相同选新的</li>
+<li>下一跳不同选近的</li>
+</ul>
+
         </div>
         
         <hr style="height:1px;margin:1rem 0" />
@@ -353,15 +363,15 @@
         <a class="is-flex" href="#如何划分子网">
         <span class="has-mr-6">3.3</span>
         <span>如何划分子网</span>
+        </a></li><li>
+        <a class="is-flex" href="#无分类编址CIDR">
+        <span class="has-mr-6">3.4</span>
+        <span>无分类编址CIDR</span>
         </a></li></ul></li><li>
-        <a class="is-flex" href="#路由选择协议">
+        <a class="is-flex" href="#路由选择协议RIP协议">
         <span class="has-mr-6">4</span>
-        <span>路由选择协议</span>
-        </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#RIP协议">
-        <span class="has-mr-6">4.1</span>
-        <span>RIP协议</span>
-        </a></li></ul></li></ul>
+        <span>路由选择协议RIP协议</span>
+        </a></li></ul>
         </div>
     </div>
 </div>
