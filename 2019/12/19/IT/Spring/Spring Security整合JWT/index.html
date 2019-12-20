@@ -7,19 +7,19 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>【操作系统】操作系统安全 - Honey Lemonade&#39;s blog</title>
+<title>Spring Security整合JWT - Honey Lemonade&#39;s blog</title>
 
 
-    <meta name="keywords" content="操作系统,RBAC">
+    <meta name="keywords" content="Security,JWT,token">
 <meta property="og:type" content="article">
-<meta property="og:title" content="【操作系统】操作系统安全">
-<meta property="og:url" content="https:&#x2F;&#x2F;honeylemonade.github.io&#x2F;2019&#x2F;12&#x2F;04&#x2F;IT&#x2F;%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F&#x2F;%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AE%89%E5%85%A8&#x2F;index.html">
+<meta property="og:title" content="Spring Security整合JWT">
+<meta property="og:url" content="https:&#x2F;&#x2F;honeylemonade.github.io&#x2F;2019&#x2F;12&#x2F;19&#x2F;IT&#x2F;Spring&#x2F;Spring%20Security%E6%95%B4%E5%90%88JWT&#x2F;index.html">
 <meta property="og:site_name" content="Honey Lemonade&#39;s blog">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https:&#x2F;&#x2F;honeylemonade.oss-cn-beijing.aliyuncs.com&#x2F;blog&#x2F;IT&#x2F;%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F&#x2F;operating%20system.jpg">
-<meta property="og:updated_time" content="2019-12-19T10:30:31.719Z">
+<meta property="og:image" content="https:&#x2F;&#x2F;honeylemonade.oss-cn-beijing.aliyuncs.com&#x2F;blog&#x2F;IT&#x2F;Spring&#x2F;封面.png">
+<meta property="og:updated_time" content="2019-12-20T00:39:27.340Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https:&#x2F;&#x2F;honeylemonade.oss-cn-beijing.aliyuncs.com&#x2F;blog&#x2F;IT&#x2F;%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F&#x2F;operating%20system.jpg">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;honeylemonade.oss-cn-beijing.aliyuncs.com&#x2F;blog&#x2F;IT&#x2F;Spring&#x2F;封面.png">
 
 
 
@@ -77,7 +77,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/logo.png" alt="【操作系统】操作系统安全" height="28">
+                <img src="/images/logo.png" alt="Spring Security整合JWT" height="28">
             
             </a>
         </div>
@@ -135,36 +135,31 @@
     
     <div class="card-image">
         <span  class="image is-7by1">
-        <img class="thumbnail" src="https://honeylemonade.oss-cn-beijing.aliyuncs.com/blog/IT/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/operating%20system.jpg" alt="【操作系统】操作系统安全">
+        <img class="thumbnail" src="https://honeylemonade.oss-cn-beijing.aliyuncs.com/blog/IT/Spring/封面.png" alt="Spring Security整合JWT">
         </span>
     </div>
     
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-            【操作系统】操作系统安全
+            Spring Security整合JWT
             
         </h1>
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2019-12-04T06:55:31.772Z"><i
-                        class="far fa-calendar-alt">&nbsp;</i>2019-12-04</time>
+                <time class="level-item has-text-grey" datetime="2019-12-19T10:51:12.047Z"><i
+                        class="far fa-calendar-alt">&nbsp;</i>2019-12-19</time>
                 
-                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-12-19T10:30:31.719Z"><i
-                        class="far fa-calendar-check">&nbsp;</i>2019-12-19</time>
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2019-12-20T00:39:27.340Z"><i
+                        class="far fa-calendar-check">&nbsp;</i>2019-12-20</time>
                 
-                
-                <i style="color: #7a7a7a;" class="fa fa-folder-open">&nbsp;</i>
-                <div class="level-item">
-                    <a class="has-link-grey -link" href="/categories/IT/">IT</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/IT/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统</a>
-                </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    5 分钟 读完 (大约 722 个字)
+                    1 分钟 读完 (大约 210 个字)
                 </span>
                 
                 
@@ -176,60 +171,20 @@
             <!-- abstract-->
 <a id="more"></a>
 
-<h1 id="安全评估与标准"><a href="#安全评估与标准" class="headerlink" title="安全评估与标准"></a>安全评估与标准</h1><h2 id="美国国防部的橙皮书"><a href="#美国国防部的橙皮书" class="headerlink" title="美国国防部的橙皮书"></a>美国国防部的橙皮书</h2><ol>
-<li>D<ol>
-<li>DOS</li>
-<li>windows3.x</li>
-<li>windows95</li>
-<li>apple system7</li>
+<h1 id="Token原理"><a href="#Token原理" class="headerlink" title="Token原理"></a>Token原理</h1><p>在整合之前，我们要了解token的原理， token也叫做令牌，一个用户在认证成功后，将得到token，接下来需要权限的请求将携带token，以保证请求通过</p>
+<h1 id="整合思路"><a href="#整合思路" class="headerlink" title="整合思路"></a>整合思路</h1><blockquote>
+<p>可以参考github的图书管理系统整合Demo</p>
+</blockquote>
+<h2 id="请求获取token"><a href="#请求获取token" class="headerlink" title="请求获取token"></a>请求获取token</h2><ol>
+<li>对于登录接口，使用authenticationManager进行用户身份的认证</li>
+<li>认证通过后，将该用户的权限存入生成的token中</li>
+<li>返回给客户端token</li>
 </ol>
-</li>
-<li>C<ol>
-<li>UNIX</li>
-<li>XENIX</li>
-<li>NOVELL3</li>
-<li>Windows NT</li>
+<h2 id="需要权限的请求"><a href="#需要权限的请求" class="headerlink" title="需要权限的请求"></a>需要权限的请求</h2><ol>
+<li>从request中获取token，并解析token，判断是否有效/过期，以及拥有的权限</li>
+<li>将解析到的权限加入到SecurityContextHolder中</li>
+<li>利用spring security的权限需求功能判断请求是否通过（系统自己完成）</li>
 </ol>
-</li>
-<li>B<ol>
-<li>B1:红旗操作系统，softOS</li>
-<li>B2</li>
-<li>B3</li>
-</ol>
-</li>
-<li>A<ol>
-<li>A1</li>
-<li>A1以上</li>
-</ol>
-</li>
-</ol>
-<h1 id="安全机制"><a href="#安全机制" class="headerlink" title="安全机制"></a>安全机制</h1><h2 id="认证机制"><a href="#认证机制" class="headerlink" title="认证机制"></a>认证机制</h2><p>目的是核对用户身份，常用方法有：</p>
-<ol>
-<li>口令</li>
-<li>物理介质</li>
-<li>生物技术</li>
-</ol>
-<h2 id="访问控制"><a href="#访问控制" class="headerlink" title="访问控制"></a>访问控制</h2><p>为了授权不同的进程或用户</p>
-<ol>
-<li>自主访问控制（基于存储矩阵）</li>
-<li>强制访问控制</li>
-</ol>
-<h2 id="恶意代码"><a href="#恶意代码" class="headerlink" title="恶意代码"></a>恶意代码</h2><ol>
-<li>特洛伊木马：特洛伊木马是一种软件程序，表面上友善，实质上承载恶意的有效载荷，具有对网络和系统的潜在破坏能力</li>
-<li>后门：开发人员在运行代码中插入与系统不相干的操作</li>
-<li>病毒：病毒是被插入到可执行文件中的，当程序运行时，病毒代码就会被执行。病毒代码可以将自身复制插入到其他程序中，病毒有以下特点<ul>
-<li>寄生性：寄生在某个可执行文件中</li>
-<li>传染性：可以传染其他程序</li>
-<li>潜伏性：系统感染病毒后，一开始并无任何症状，当满足条件是，才会进行破坏</li>
-<li>破坏性：只有具有破坏性的代码，才被认为是病毒</li>
-</ul>
-</li>
-<li>蠕虫：蠕虫和病毒都是试图在计算机中传播他们自己的代码。但蠕虫可以自己运行，并且能够将一个完全有效的自己传播到其他机器。</li>
-<li>逻辑炸弹： 当运行中的信息系统满足特定<strong>逻辑</strong>（如系统时间达到某个值、收到某个特定的消息、多次不能访问特定服务）时，<strong>逻辑炸弹</strong>的特定功能（如破坏硬件或数据、加载恶意代码、锁定操作系统）将被触发，从而造成有害后果。 </li>
-<li>细菌：细菌不会明显损坏任何文件，他们的目的就是复制自身。</li>
-</ol>
-<h1 id="安全模型"><a href="#安全模型" class="headerlink" title="安全模型"></a>安全模型</h1><h2 id="RBAC模型"><a href="#RBAC模型" class="headerlink" title="RBAC模型"></a>RBAC模型</h2><p>RBAC是一套成熟的权限模型。在传统权限模型中，我们直接把权限赋予用户。而在RBAC中，增加了“角色”的概念，我们首先把权限赋予角色，再把角色赋予用户。这样，由于增加了角色，授权会更加灵活方便。在RBAC中，根据权限的复杂程度，又可分为RBAC0、RBAC1、RBAC2、RBAC3。其中，RBAC0是基础，RBAC1、RBAC2、RBAC3都是以RBAC0为基础的升级。我们可以根据产品权限的复杂程度，选取适合的权限模型。 </p>
-<p><img src="https://honeylemonade.oss-cn-beijing.aliyuncs.com/blog/IT/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/20191204153308.png" alt></p>
 
         </div>
         
@@ -238,7 +193,7 @@
             <div class="level-start">
                 <div class="level-item">
                     <i class="fas fa-tags has-text-grey"></i>&nbsp;
-                    <a class="has-link-grey -link" href="/tags/RBAC/" rel="tag">RBAC</a>,&nbsp;<a class="has-link-grey -link" href="/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" rel="tag">操作系统</a>
+                    <a class="has-link-grey -link" href="/tags/JWT/" rel="tag">JWT</a>,&nbsp;<a class="has-link-grey -link" href="/tags/Security/" rel="tag">Security</a>,&nbsp;<a class="has-link-grey -link" href="/tags/token/" rel="tag">token</a>
                 </div>
             </div>
         </div>
@@ -255,19 +210,11 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev"
-                href="/2019/12/19/IT/Spring/Spring%20Security%E6%95%B4%E5%90%88JWT/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">Spring Security整合JWT</span>
-            </a>
-        </div>
-        
         
         <div class="level-end">
             <a class="level level-item has-link-grey  article-nav-next"
-                href="/2019/11/30/IT/%E5%85%B6%E4%BB%96/CROS%E8%B7%A8%E5%9F%9F/">
-                <span class="level-item">CROS跨域</span>
+                href="/2019/12/04/IT/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/%E3%80%90%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E3%80%91%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AE%89%E5%85%A8/">
+                <span class="level-item">【操作系统】操作系统安全</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -294,37 +241,21 @@
                 目录
             </h3>
             <ul class="menu-list"><li>
-        <a class="is-flex" href="#安全评估与标准">
+        <a class="is-flex" href="#Token原理">
         <span class="has-mr-6">1</span>
-        <span>安全评估与标准</span>
-        </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#美国国防部的橙皮书">
-        <span class="has-mr-6">1.1</span>
-        <span>美国国防部的橙皮书</span>
-        </a></li></ul></li><li>
-        <a class="is-flex" href="#安全机制">
+        <span>Token原理</span>
+        </a></li><li>
+        <a class="is-flex" href="#整合思路">
         <span class="has-mr-6">2</span>
-        <span>安全机制</span>
+        <span>整合思路</span>
         </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#认证机制">
+        <a class="is-flex" href="#请求获取token">
         <span class="has-mr-6">2.1</span>
-        <span>认证机制</span>
+        <span>请求获取token</span>
         </a></li><li>
-        <a class="is-flex" href="#访问控制">
+        <a class="is-flex" href="#需要权限的请求">
         <span class="has-mr-6">2.2</span>
-        <span>访问控制</span>
-        </a></li><li>
-        <a class="is-flex" href="#恶意代码">
-        <span class="has-mr-6">2.3</span>
-        <span>恶意代码</span>
-        </a></li></ul></li><li>
-        <a class="is-flex" href="#安全模型">
-        <span class="has-mr-6">3</span>
-        <span>安全模型</span>
-        </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#RBAC模型">
-        <span class="has-mr-6">3.1</span>
-        <span>RBAC模型</span>
+        <span>需要权限的请求</span>
         </a></li></ul></li></ul>
         </div>
     </div>
@@ -348,7 +279,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/logo.png" alt="【操作系统】操作系统安全" height="28">
+                    <img src="/images/logo.png" alt="Spring Security整合JWT" height="28">
                 
                 </a>
                 <p class="is-size-7">
